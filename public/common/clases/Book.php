@@ -6,7 +6,6 @@ class Book {
     protected $cover;//String ruta
     protected $author;//id
     protected $genre;//id
-	//protected $tipo;//String('tapa dura', 'de bolsillo'...)
 	protected $language;//String ('es', 'en', 'it')
 	protected $saga;//Saga/Trilogia
 	protected $rating;//decimal
@@ -16,6 +15,7 @@ class Book {
 	protected $visible;//boolean
 	//Otros (Páginas, Dimensiones, Fecha Publicación, Editorial, Ranking)
 	
+	/**Getters/Setters**/
 	public function getIban(){
 		return $this->iban;
 	}
@@ -55,14 +55,6 @@ class Book {
 	public function setGenre($genre){
 		$this->genre = $genre;
 	}
-
-	// public function getTipo(){
-		// return $this->tipo;
-	// }
-
-	// public function setTipo($tipo){
-		// $this->tipo = $tipo;
-	// }
 
 	public function getLanguage(){
 		return $this->language;
@@ -121,14 +113,12 @@ class Book {
 	}
 	
     
-    //public function getcodigo() {return $this->codigo; }
     
     public function __construct($row) {
         $this->iban = $row['iban'];
         $this->title = $row['title'];
         $this->cover = $row['cover'];
         $this->author = $row['author'];
-        // $this->tipo = $row['tipo'];
         $this->language = $row['language'];
         $this->saga = $row['saga'];
         $this->rating = $row['rating'];
