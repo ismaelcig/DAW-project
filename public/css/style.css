@@ -1,0 +1,104 @@
+/***Genéricos***/
+/*Enlaces*/
+a{
+    color: #0d0d0d;
+	text-decoration: none;
+}
+a:active, a:hover {
+    outline: 0;
+}
+
+a:hover, a:focus {
+    color: #0d0d0d;
+    text-decoration: underline;
+}
+
+h3{
+	font-size: 1.5vw;
+}
+
+/***IDs***/
+/* Cabecera de la página */
+#header{
+
+}
+
+/* Contenedor de libros */
+#container{
+	
+}
+
+/* Cabecera del contenedor */
+#container-Header{
+	
+}
+
+/* Muestra los libros */
+#book-items{
+	display: table;
+}
+
+
+/***Clases***/
+/* Muestra datos de un libro */
+.book-item{
+	border:1px solid #000000;
+	padding:4px;
+	margin:5px;
+	width: 140px;
+	height: 315px;
+	display: inline-block;
+}
+
+/* Contiene la portada del libro */
+.item-img{
+	width: 130px;
+	height: 130px;
+	margin: 0 auto;
+}
+.item-img a{
+	position: relative;
+	/*display: inline-block;*/
+	height: 100%;
+	max-width: 100%;
+}
+.item-img img{
+	width: 100%;
+}
+
+/* Contiene la información básica del libro */
+.item-info{
+	width: 130px;
+	
+}
+
+/* Título del libro */
+.item-title{
+	width: 100%;
+	margin: 0px;
+}
+
+/* Autor/a del libro */
+.item-author{
+	width: 130px;
+	
+}
+
+/* Precio del libro */
+.item-price{
+	width: 130px;
+	margin: 0px;
+	
+}
+
+/* Contiene botones */
+.item-action{
+	width: 130px;
+	
+}
+
+/* Botón Añadir al carrito */
+.add-basket{
+	width: 100%;
+	
+}

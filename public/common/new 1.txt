@@ -1,0 +1,16 @@
+iban
+titulo
+portada
+autor
+tipo
+idioma
+saga
+rate
+descripcion
+precio
+stock
+visible
+
+iban,titulo,portada,autor,tipo,idioma,saga,rate,descripcion,precio,stock,visible
+
+$iban,$titulo,$portada,$autor,$tipo,$idioma,$saga,$rate,$descripcion,$precio,$stock,$visible
