@@ -1,0 +1,2 @@
+Cabecera:
+	- Evitar collapse al bajar de 751px
