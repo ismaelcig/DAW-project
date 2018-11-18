@@ -1,0 +1,6 @@
+Cabecera:
+	- Evitar collapse al bajar de 751px
+	- Fixed-top
+
+BD:
+	- Crear tablas(Book, Author, Genre, User)
