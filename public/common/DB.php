@@ -1,10 +1,11 @@
-<?php
+<!--
+<php
 require_once('Libro.php');
 
 class DB {
 	/**
 	 * Recibe una query y la ejecuta
-	 */
+	 *//*
     protected static function ejecutaConsulta($sql) {
         $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
         $dsn = "mysql:host=localhost;dbname=project";
@@ -15,7 +16,7 @@ class DB {
         $resultado = null;
         if (isset($conn)) $resultado = $conn->query($sql);
         return $resultado;
-    }
+    }*/
 	
 	/**
 	 * Recupera un libro directamente por su iban
@@ -95,7 +96,7 @@ class DB {
 	/**
 	 * Añade un filtro a la query.
 	 * Añade 'AND' si es necesario.
-	 */
+	 *//*
 	public static function addFilter($query, $campo, $valor){
 		$and = " AND ";
 		if(isset($query) && isset($campo) && isset($valor)){
@@ -104,7 +105,7 @@ class DB {
 			$query.= $campo . "=" . $valor;
 			return $query;
 		}
-	}
+	}*/
     
 	/**
 	 * Comprueba si existe usuario/contraseña
@@ -125,4 +126,4 @@ class DB {
     
 }
 
-?>
+?>-->
