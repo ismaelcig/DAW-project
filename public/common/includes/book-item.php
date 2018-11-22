@@ -1,0 +1,80 @@
+<?php
+
+/**
+ * Función que recibe el rating de un libro
+ * y devuelve el html con las estrellas para indicarlo visualmente
+ */
+function getHtmlStars($rating){
+	$res = '';
+	for($i=1; $i<=5; $i++){
+		if($i<=$rating){
+			//Imprime estrella roja
+			$res.='<label for="stars-rating-5"><i class="fa fa-star text-danger"></i></label>';
+		}
+		else{//Imprime estrella amarilla
+			$res.='<label for="stars-rating-1"><i class="fa fa-star text-warning"></i></label>';
+		}
+	}
+	return $res;
+}
+
+/**
+ * 
+ * 
+ */
+function createBookItem($bookVO){
+	echo
+	'<div class="col-md-4 col-xs-6 product">
+		<div class="prod-info-main prod-wrap clearfix">
+			<div class="row">
+				<div class="col-md-5 col-xs-5">
+					<div class="product-image"> 
+						<img src="img/books/'.$bookVO->getCover().'" onerror="this.src=\'img/books/default_cover.jpg\'" class="img-responsive"> 
+						<!--<span class="tag2 hot">
+							HOT
+						</span> -->
+					</div>
+				</div>
+				<div class="col-md-7 col-xs-7">
+					<div>
+						<div class="product-detail">
+							<h5 class="name">
+								<a href="#">'.
+									$bookVO->getTitle().'
+								</a>
+								<a href="#">
+									<span>'.$bookVO->getAuthor()->getName().'</span>
+								</a>
+								<a href="#">
+									<span>'.$bookVO->getGenre()->getName().'</span>
+								</a>
+							</h5>
+							<div class="product-info smart-form bottom">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="rating">Rating:'.
+											getHtmlStars($bookVO->getRating())
+										.'</div>
+									</div>
+								</div>
+								<div>
+									<p class="price-container">
+										<span>'.$bookVO->getPrice().'€</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="btn-box">
+						<div class="col-md-12"> 
+							<a href="javascript:void(0);" class="btn btn-danger btn-padding">Add to cart</a>
+							<a href="javascript:void(0);" class="btn btn-info btn-padding">More info</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>';
+
+}
+?>

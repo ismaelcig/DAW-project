@@ -42,7 +42,7 @@
 									<?php 
 										include('common/BD/fachadas/GenreFacade.php');
 										//Recuperamos los géneros de la BD
-										foreach(findAllGenres() as $row) {
+										foreach(findAllGenres() as $genre) {
 										//TODO: Que filtre por géneros al pulsar
 											echo '<li><a href="#">'.$genre->getName().'</a></li>';
 										}

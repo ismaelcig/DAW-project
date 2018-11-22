@@ -1,14 +1,15 @@
 <?php
-require_once('Author.php');
+require_once(__DIR__.'/../../fachadas/AuthorFacade.php');
+require_once(__DIR__.'/../Book.php');
 
-class Book {
+class BookVO {
     protected $id;//Decimal
     protected $title;//String
     protected $cover;//String ruta
-    protected $author;//id
-    protected $genre;//id
+    protected $author;//Author
+    protected $genre;//Genre
 	protected $language;//String ('es', 'en', 'it')
-	protected $saga;//id
+	protected $saga;//Saga
 	protected $rating;//decimal
 	protected $synopsis;//String
 	protected $price;//decimal
@@ -114,20 +115,26 @@ class Book {
 	}
 	
     
-    
-    public function __construct($row) {
-        $this->id = $row['id'];
-        $this->title = $row['title'];
-        $this->cover = $row['cover'];
-        $this->author = $row['author'];
-        $this->genre = $row['genre'];
-        $this->language = $row['language'];
-        $this->saga = $row['saga'];
-        $this->rating = $row['rating'];
-        $this->synopsis = $row['synopsis'];
-        $this->price = $row['price'];
-        $this->stock = $row['stock'];
-        $this->visible = $row['visible'];
+    /**
+	 * Recibe un objeto book
+	 */
+    public function __construct($book) {
+        $this->id = $book->getId();
+        $this->title = $book->getTitle();
+        $this->cover = $book->getCover();
+		if(null != $book->getAuthor()){
+			$this->author = findAuthor($book->getAuthor());
+		}
+		if(null != $book->getGenre()){
+			$this->genre = findGenre($book->getGenre());
+		}
+        $this->language = $book->getLanguage();
+        $this->saga = $book->getSaga();
+        $this->rating = $book->getRating();
+        $this->synopsis = $book->getSynopsis();
+        $this->price = $book->getPrice();
+        $this->stock = $book->getStock();
+        $this->visible = $book->getVisible();
     }
 }
 
