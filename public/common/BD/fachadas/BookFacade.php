@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__.'/../DB.php');
 require_once(__DIR__.'/../objetos/Book.php');
+require_once(__DIR__.'/../objetos/VOs/BookVO.php');
 
 
 /*********************************************************
@@ -27,9 +28,9 @@ function findAllBooks() {
  * Devuelve sólo los datos necesarios para mostrarlo por pantalla
  */
 function findBookItems($genre, $author, $minPrice, $maxPrice){
-	$query = "SELECT title,cover,author,genre,rating,price".
-				"FROM book ".
-				"WHERE `stock` > 0 AND `visible` = 1 ";
+	$query = "SELECT id,title,cover,author,genre,rating,price
+				FROM book 
+				WHERE stock > 0 AND visible = 1 ";
 	//Filtros
 	if(isset($genre)){
 		$query.= "AND genre = $genre";
@@ -47,7 +48,7 @@ function findBookItems($genre, $author, $minPrice, $maxPrice){
 	
 	foreach(ejecutarConsulta($query) as $row) {
 		// Añadimos un objeto por cada elemento obtenido
-		$res[] = new Book($row);
+		$res[] = new BookVO($row);
 	}
 	return $res;
 }

@@ -116,9 +116,9 @@ class BookVO {
 	
     
     /**
-	 * Recibe un objeto book
+	 * Recibe un objeto book y crea BookVO
 	 */
-    public function __construct($book) {
+    public function bookToVo($book) {
         $this->id = $book->getId();
         $this->title = $book->getTitle();
         $this->cover = $book->getCover();
@@ -135,6 +135,47 @@ class BookVO {
         $this->price = $book->getPrice();
         $this->stock = $book->getStock();
         $this->visible = $book->getVisible();
+    }
+	
+    /**
+	 * Recibe un row desde la BD y crea BookVO
+	 */
+    public function __construct($row) {
+		//Cubrimos los campos que nos lleguen
+		$this->id = $row['id'];//Tiene que venir siempre
+		if(isset($row['title'])){
+			$this->title = $row['title'];
+		}
+		if(isset($row['cover'])){
+			$this->cover = $row['cover'];
+		}
+		if(isset($row['author'])){
+			$this->author = findAuthor($row['author']);
+		}
+		if(isset($row['genre'])){
+			$this->genre = findGenre($row['genre']);
+		}
+		if(isset($row['language'])){
+			$this->language = $row['language'];
+		}
+		if(isset($row['saga'])){
+			$this->saga = findSaga($row['saga']);
+		}
+		if(isset($row['rating'])){
+			$this->rating = $row['rating'];
+		}
+		if(isset($row['synopsis'])){
+			$this->synopsis = $row['synopsis'];
+		}
+		if(isset($row['price'])){
+			$this->price = $row['price'];
+		}
+		if(isset($row['stock'])){
+			$this->stock = $row['stock'];
+		}
+		if(isset($row['visible'])){
+			$this->visible = $row['visible'];
+		}
     }
 }
 

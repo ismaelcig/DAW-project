@@ -9,10 +9,10 @@ function getHtmlStars($rating){
 	for($i=1; $i<=5; $i++){
 		if($i<=$rating){
 			//Imprime estrella roja
-			$res.='<label for="stars-rating-5"><i class="fa fa-star text-danger"></i></label>';
+			$res.='<label for="stars-rating-'.$i.'"><i class="fa fa-star text-danger"></i></label>';
 		}
 		else{//Imprime estrella amarilla
-			$res.='<label for="stars-rating-1"><i class="fa fa-star text-warning"></i></label>';
+			$res.='<label for="stars-rating-'.$i.'"><i class="fa fa-star text-warning"></i></label>';
 		}
 	}
 	return $res;
@@ -52,9 +52,11 @@ function createBookItem($bookVO){
 							<div class="product-info smart-form bottom">
 								<div class="row">
 									<div class="col-md-12">
-										<div class="rating">Rating:'.
-											getHtmlStars($bookVO->getRating())
-										.'</div>
+										<div class="rating">'.
+											getHtmlStars($bookVO->getRating()).
+											' '.
+											$bookVO->getRating().
+										'</div>
 									</div>
 								</div>
 								<div>
@@ -68,7 +70,10 @@ function createBookItem($bookVO){
 					<div class="btn-box">
 						<div class="col-md-12"> 
 							<a href="javascript:void(0);" class="btn btn-danger btn-padding">Add to cart</a>
-							<a href="javascript:void(0);" class="btn btn-info btn-padding">More info</a>
+							<a href="javascript:void(0);" class="btn btn-info btn-padding">
+								<span class="full-text">More info</span>
+								<span class="short-text">+Info</span>
+							</a>
 						</div>
 					</div>
 				</div>

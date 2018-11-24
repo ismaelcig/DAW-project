@@ -395,11 +395,16 @@ body{
 .navbar-right {
 	float: right!important;
 }
+.right{
+	margin-left: 110px;
+	min-width: 765px;
+}
 
-/**/
+
+/**//*
 .container-fluid {
 	min-width: 785px;
-}
+}*/
 
 
 /*Mantener altura de todos los book-item*/
@@ -423,24 +428,4 @@ body{
 @media (max-width: 1200px) {
     .short-text { display: inline-block; }
     .full-text { display: none; }
-}
-
-
-
-
-
-
-/*pruebas*/
-.asd{
-	
-}
-.asd1{
-	background-color: red;
-}
-.prod-info-main .product-detail{
-	background: rebeccapurple;
-}
-.btn-box{
-	background-color: blue;
-	margin-bottom: -2px;
 }

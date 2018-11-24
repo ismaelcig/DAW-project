@@ -14,17 +14,17 @@
 	<body>
 		<!--Barra navegación-->
 		<?php include_once ('common/includes/navbars.html'); ?>
-		<!--Productos-->
-		<div id="a" class="container-fluid">
-			<div class="container">
+		<!--Libros-->
+		<div id="book-container" class="container-fluid">
+			<div id="book-items" class="container">
 				<?php
-					//TODO: Cargar libros
+					//Cargar libros
 					include_once ('common/includes/book-item.php');
 					include_once ('common/BD/fachadas/BookFacade.php');
 					include_once ('common/BD/objetos/VOs/BookVO.php');
-					foreach(findAllBooks() as $b) {
-					//foreach(findBookItems(null,null,null,null) as $b) {
-						createBookItem(new BookVO($b));
+					
+					foreach(findBookItems(null,null,null,null) as $bVO) {
+						createBookItem($bVO);
 					}
 				?>
 			</div>
