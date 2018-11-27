@@ -39,13 +39,13 @@ function createBookItem($bookVO){
 					<div>
 						<div class="product-detail">
 							<h5 class="name">
-								<a href="#">'.
+								<a href="#">'.//Abrir página del libro
 									$bookVO->getTitle().'
 								</a>
-								<a href="#">
+								<a href="index.php?author='.$bookVO->getAuthor()->getId().'">
 									<span>'.$bookVO->getAuthor()->getName().'</span>
 								</a>
-								<a href="#">
+								<a href="index.php?genre='.$bookVO->getGenre()->getId().'">
 									<span>'.$bookVO->getGenre()->getName().'</span>
 								</a>
 							</h5>
@@ -61,7 +61,9 @@ function createBookItem($bookVO){
 								</div>
 								<div>
 									<p class="price-container">
-										<span>'.$bookVO->getPrice().'€</span>
+										<span>'.
+										getMoney($bookVO->getPrice()).
+										'</span>
 									</p>
 								</div>
 							</div>

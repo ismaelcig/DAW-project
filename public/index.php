@@ -9,6 +9,11 @@
 		 * @version 1.0
 		 */
 			include_once ('common/includes/heading.html');//Se incluye head
+			include_once ('common/includes/Utilidades.php');
+			session_start();
+			//Inicializo variables de sesión
+			session('currency', 'EURO');
+			session('lang', 'ES');
 		?>
 	</head>
 	<body>
@@ -18,12 +23,19 @@
 		<div id="book-container" class="container-fluid">
 			<div id="book-items" class="container">
 				<?php
-					//Cargar libros
+					/***Cargar libros***/
 					include_once ('common/includes/book-item.php');
 					include_once ('common/BD/fachadas/BookFacade.php');
 					include_once ('common/BD/objetos/VOs/BookVO.php');
+					//Variables por las que filtrar
+					$genre   = get('genre');
+					$author  = get('author');
+					$minPrice= get('min');
+					$maxPrice= get('max');
 					
-					foreach(findBookItems(null,null,null,null) as $bVO) {
+					foreach(findBookItems($genre, $author, $minPrice, $maxPrice)
+								as $bVO)
+					{
 						createBookItem($bVO);
 					}
 				?>

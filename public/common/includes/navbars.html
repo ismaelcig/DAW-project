@@ -3,7 +3,7 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="left">
 			<!--Logo-->
-			<a class="navbar-brand" href="#">
+			<a class="navbar-brand" href="index.php">
 				<img src="img/logo.png" width="80" height="80" class="align-top" alt="">
 			</a>
 		</div>
@@ -14,16 +14,22 @@
 					<div class="container-fluid">
 						<ul class="nav navbar-nav">
 							<li><a href="#"><span class="glyphicon glyphicon-envelope move-icon"></span>Contact</a></li>
-							<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Language: EN <span class="caret"></span></a>
+							<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+													Language: <?php echo $_SESSION['lang']?>
+													<span class="caret"></span>
+												</a>
 								<ul class="dropdown-menu dropdown-content">
-									<li><a href="#">EN - English</a></li>
-									<li><a href="#">ES - Español</a></li>
+									<li><a href="index.php?lang=EN">EN - English</a></li>
+									<li><a href="index.php?lang=ES">ES - Español</a></li>
 								</ul>
 							</li>
-							<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Euro €<span class="caret"></span></a>
+							<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+													<?php echo $_SESSION['currency']?>
+													<span class="caret"></span>
+												</a>
 								<ul class="dropdown-menu dropdown-content">
-									<li><a href="#">Euro €</a></li>
-									<li><a href="#">USD $</a></li>
+									<li><a href="index.php?currency=EURO">EURO €</a></li>
+									<li><a href="index.php?currency=USD">USD $</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -49,7 +55,8 @@
 										//Recuperamos los géneros de la BD
 										foreach(findAllGenres() as $genre) {
 										//TODO: Que filtre por géneros al pulsar
-											echo '<li><a href="#">'.$genre->getName().'</a></li>';
+											echo '<li><a href="index.php?genre='.$genre->getId().'">'.
+													$genre->getName().'</a></li>';
 										}
 									?>
 								</ul>
