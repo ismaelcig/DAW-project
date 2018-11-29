@@ -13,20 +13,24 @@ function get($id){
 }
 
 /**
- * Recibe un id y un valor por defecto.
- * Trata de recuperar el valor con GET 
- * Sino, si la variable SESSION ya tiene un valor, lo mantiene
- * Sino, en último caso utiliza $default
+ * Comienza una sessión 
+ * Inicializa variables de sesión si no lo están
+ * Comprueba si nos llegan por GET y lo guarda en SESSION
  */
-function session($id, $default){
-	if(isset($_GET[$id]))
-		$_SESSION[$id] = $_GET[$id];
-	else if(isset($_SESSION[$id]))
-		$_SESSION[$id] = $_SESSION[$id];
-	else 
-		$_SESSION[$id] = $default;
+function initSession(){
+	session_start();
+	//Currency (por defecto: 'EURO')
+	if(isset($_GET['currency']))//Si nos llega como parámetro
+		$_SESSION['currency'] = $_GET['currency'];
+	else if(!isset($_SESSION['currency']))//Si no está inicializada
+		$_SESSION['currency'] = 'EURO';
+	//Lang (por defecto: 'ES')
+	if(isset($_GET['lang']))//Si nos llega como parámetro
+		$_SESSION['lang'] = $_GET['lang'];
+	else if(!isset($_SESSION['lang']))//Si no está inicializada
+		$_SESSION['lang'] = 'ES';
+	
 }
-
 
 /**
  * Recibe un valor(€)

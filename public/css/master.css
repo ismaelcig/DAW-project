@@ -297,7 +297,7 @@ body{
 	.prod-info-main .product-detail {
 		height: 17rem;
 	}
-	.cabecera input{/*SearchBar más grande en pc*/
+	.searchBar{/*SearchBar más grande en pc*/
 		min-width: 400px;
 	}
 }
@@ -355,9 +355,9 @@ body{
 	height: 80px;
 	padding: 0;
 }
-.cabecera{
+/*.cabecera{
 	margin-left: 90px;
-}
+}*/
 
 .move-icon{
 	left: -5px;

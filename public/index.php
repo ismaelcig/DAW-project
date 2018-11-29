@@ -10,10 +10,8 @@
 		 */
 			include_once ('common/includes/heading.html');//Se incluye head
 			include_once ('common/includes/Utilidades.php');
-			session_start();
-			//Inicializo variables de sesión
-			session('currency', 'EURO');
-			session('lang', 'ES');
+			//Comenzar session (inicializa variables de sesión)
+			initSession();
 		?>
 	</head>
 	<body>
