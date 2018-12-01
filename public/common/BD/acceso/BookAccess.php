@@ -12,13 +12,6 @@ class BookAccess{
 	 * Devuelve un array de objetos bookLangDAO
 	 */
 	function findAll() {
-		/*$query = "SELECT id,author,genre,saga,rating,price,sold 
-					FROM book";
-		$query ="SELECT `id`,`author`,`genre`,`saga`,`rating`,`price`,`sold`,
-					`isbn`,`cover`,`title`,`synopsis`,`stock`,`visible`
-				FROM `book`, `book_lang`
-				WHERE `id` = `book_id`
-				  AND `lang` = $_SESSION['lang']";*/
 		$lang = $_SESSION['lang'];
 		$query ="SELECT id,author,genre,saga,rating,price,sold,
 					book_id,lang,isbn,cover,title,synopsis,stock,visible

@@ -263,6 +263,7 @@
 			</div>
 		</div>
 		<!-- end product -->
+		
 
 
 			
@@ -315,11 +316,22 @@
 				</div>
 			</div>
 		</div>
-		<!-- end product -->
-
-
-			
+		<!-- end product -->	
 	</div>
+	
+	<?php
+include_once ('common/BD/fachadas/AuthorFacade.php');
+/*
+$authors = AuthorFacade::findAll();
+foreach($authors as $dto){
+	echo '<h4>'.$dto->getId().': '.$dto->getName().'</h4>';
+}*/
+//echo '<h4>'.print_r(AuthorFacade::findById(15)).'</h4>';
+
+
+?>
+
 </div>
+
 </body>
 </html>
