@@ -1,57 +1,72 @@
 <?php
 require_once(__DIR__.'/../DB.php');
-require_once(__DIR__.'/../objetos/Book.php');
-require_once(__DIR__.'/../objetos/VOs/BookVO.php');
+require_once(__DIR__.'/../objetos/DTO/BookDTO.php');
+require_once(__DIR__.'/../acceso/BookAccess.php');
 
 
 /*********************************************************
- * Clase con métodos para interactuar con la tabla book
+ * Clase con los métodos de book y book_lang
  *********************************************************/
-/**
- * Recupera todos los registros de la tabla.
- * Devuelve un array de objetos book
- */
-function findAllBooks() {
-	$query = "SELECT id,title,cover,author,genre,language,
-				saga,rating,synopsis,price,stock,visible
-				FROM book";
-	$res = array();
-	
-	foreach(ejecutarConsulta($query) as $row) {
-		// Añadimos un objeto por cada elemento obtenido
-		$res[] = new Book($row);
+class BookFacade{
+	/**
+	 * Recupera todos los registros de las tablas book y book_lang.
+	 * Devuelve un array de objetos bookDTO
+	 */
+	public function findAll() {
+		$res = array();
+		
+		foreach(BookAccess::findAll() as $obj) {
+			// Añadimos un objeto por cada elemento obtenido
+			$res[] = self::daoToDto($obj);
+		}
+		return $res;
 	}
-	return $res;
-}
 
-/**
- * Devuelve sólo los datos necesarios para mostrarlo por pantalla
- */
-function findBookItems($genre, $author, $minPrice, $maxPrice){
-	$query = "SELECT id,title,cover,author,genre,rating,price
-				FROM book 
-				WHERE stock > 0 AND visible = 1 ";
-	//Filtros
-	if(isset($genre)){
-		$query.= "AND genre = $genre";
+	/**
+	 * Recupera un libro por su id
+	 */ 
+	public function findById($id){
+		$obj = BookAccess::findById($id);
+		
+		return self::daoToDto($obj);
 	}
-	if(isset($author)){
-		$query.= "AND author = $author";
-	}
-	if(isset($minPrice)){
-		$query.= "AND minPrice = $minPrice";
-	}
-	if(isset($maxPrice)){
-		$query.= "AND maxPrice = $maxPrice";
-	}
-	$res = array();
 	
-	foreach(ejecutarConsulta($query) as $row) {
-		// Añadimos un objeto por cada elemento obtenido
-		$res[] = new BookVO($row);
+	/**
+	 * Devuelve filtrando por parámetros
+	 */
+	function findBy($genre, $author, $minPrice, $maxPrice){
+		$res = array();
+		
+		foreach(
+			BookAccess::findBy($genre, $author, $minPrice, $maxPrice)
+			as $obj) 
+		{// Añadimos un objeto por cada elemento obtenido
+			$res[] = self::daoToDto($obj);
+		}
+		return $res;
 	}
-	return $res;
+	
+	
+	
+	/**
+	 * Recibe un DAO y lo pasa a DTO
+	 */
+	public function daoToDto($dao){
+		$dto = new BookDTO( $dao->getId(),
+							$dao->getAuthor(),
+							$dao->getGenre(),
+							$dao->getSaga(),
+							$dao->getRating(),
+							$dao->getPrice(),
+							$dao->getSold(),
+							$dao->getLang(),
+							$dao->getIsbn(),
+							$dao->getCover(),
+							$dao->getTitle(),
+							$dao->getSynopsis(),
+							$dao->getStock(),
+							$dao->getVisible());
+		return $dto;
+	}
 }
-
 ?>
-

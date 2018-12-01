@@ -1,21 +1,24 @@
 <?php
 require_once(__DIR__.'/../../fachadas/AuthorFacade.php');
-require_once(__DIR__.'/../Book.php');
+require_once(__DIR__.'/../../fachadas/GenreFacade.php');
+require_once(__DIR__.'/../../fachadas/SagaFacade.php');
 
 class BookVO {
     protected $id;//Decimal
-    protected $title;//String
-    protected $cover;//String ruta
     protected $author;//Author
     protected $genre;//Genre
-	protected $language;//String ('es', 'en', 'it')
 	protected $saga;//Saga
 	protected $rating;//decimal
-	protected $synopsis;//String
 	protected $price;//decimal
+	protected $sold;//int
+	
+	protected $lang;//String ('ES', 'EN')
+	protected $isbn;//String
+    protected $title;//String
+    protected $cover;//String ruta
+	protected $synopsis;//String
 	protected $stock;//int
 	protected $visible;//boolean
-	//Otros (Páginas, Dimensiones, Fecha Publicación, Editorial, Ranking)
 	
 	/**Getters/Setters**/
 	public function getId(){
@@ -24,22 +27,6 @@ class BookVO {
 
 	public function setId($id){
 		$this->id = $id;
-	}
-
-	public function getTitle(){
-		return $this->title;
-	}
-
-	public function setTitle($title){
-		$this->title = $title;
-	}
-
-	public function getCover(){
-		return $this->cover;
-	}
-
-	public function setCover($cover){
-		$this->cover = $cover;
 	}
 
 	public function getAuthor(){
@@ -58,14 +45,6 @@ class BookVO {
 		$this->genre = $genre;
 	}
 
-	public function getLanguage(){
-		return $this->language;
-	}
-
-	public function setLanguage($language){
-		$this->language = $language;
-	}
-
 	public function getSaga(){
 		return $this->saga;
 	}
@@ -82,20 +61,60 @@ class BookVO {
 		$this->rating = $rating;
 	}
 
-	public function getSynopsis(){
-		return $this->synopsis;
-	}
-
-	public function setSynopsis($synopsis){
-		$this->synopsis = $synopsis;
-	}
-
 	public function getPrice(){
 		return $this->price;
 	}
 
 	public function setPrice($price){
 		$this->price = $price;
+	}
+
+	public function getSold(){
+		return $this->sold;
+	}
+
+	public function setSold($sold){
+		$this->sold = $sold;
+	}
+
+	public function getLang(){
+		return $this->lang;
+	}
+
+	public function setLang($lang){
+		$this->lang = $lang;
+	}
+
+	public function getIsbn(){
+		return $this->isbn;
+	}
+
+	public function setIsbn($isbn){
+		$this->isbn = $isbn;
+	}
+
+	public function getTitle(){
+		return $this->title;
+	}
+
+	public function setTitle($title){
+		$this->title = $title;
+	}
+
+	public function getCover(){
+		return $this->cover;
+	}
+
+	public function setCover($cover){
+		$this->cover = $cover;
+	}
+
+	public function getSynopsis(){
+		return $this->synopsis;
+	}
+
+	public function setSynopsis($synopsis){
+		$this->synopsis = $synopsis;
 	}
 
 	public function getStock(){
@@ -116,8 +135,8 @@ class BookVO {
 	
     
     /**
-	 * Recibe un objeto book y crea BookVO
-	 */
+	 * Recibe un objeto bookDTO y crea BookVO
+	 *//*
     public function bookToVo($book) {
         $this->id = $book->getId();
         $this->title = $book->getTitle();
@@ -135,40 +154,44 @@ class BookVO {
         $this->price = $book->getPrice();
         $this->stock = $book->getStock();
         $this->visible = $book->getVisible();
-    }
+    }*/
 	
     /**
-	 * Recibe un row desde la BD y crea BookVO
+	 * Recibe un row y crea BookVO
 	 */
     public function __construct($row) {
 		//Cubrimos los campos que nos lleguen
 		$this->id = $row['id'];//Tiene que venir siempre
+		if(isset($row['author'])){
+			$this->author = AuthorFacade::findById($row['author']);
+		}
+		if(isset($row['genre'])){
+			$this->genre = GenreFacade::findById($row['genre']);
+		}
+		if(isset($row['saga'])){
+			$this->saga = SagaFacade::findById($row['saga']);
+		}
+		if(isset($row['rating'])){
+			$this->rating = $row['rating'];
+		}
+		if(isset($row['price'])){
+			$this->price = $row['price'];
+		}
+		
+		if(isset($row['lang'])){
+			$this->lang = $row['lang'];
+		}
+		if(isset($row['isbn'])){
+			$this->isbn = $row['isbn'];
+		}
 		if(isset($row['title'])){
 			$this->title = $row['title'];
 		}
 		if(isset($row['cover'])){
 			$this->cover = $row['cover'];
 		}
-		if(isset($row['author'])){
-			$this->author = findAuthor($row['author']);
-		}
-		if(isset($row['genre'])){
-			$this->genre = findGenre($row['genre']);
-		}
-		if(isset($row['language'])){
-			$this->language = $row['language'];
-		}
-		if(isset($row['saga'])){
-			$this->saga = findSaga($row['saga']);
-		}
-		if(isset($row['rating'])){
-			$this->rating = $row['rating'];
-		}
 		if(isset($row['synopsis'])){
 			$this->synopsis = $row['synopsis'];
-		}
-		if(isset($row['price'])){
-			$this->price = $row['price'];
 		}
 		if(isset($row['stock'])){
 			$this->stock = $row['stock'];
