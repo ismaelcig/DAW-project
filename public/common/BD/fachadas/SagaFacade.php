@@ -1,21 +1,21 @@
 <?php
 require_once(__DIR__.'/../DB.php');
-require_once(__DIR__.'/../objetos/DTO/GenreDTO.php');
-require_once(__DIR__.'/../acceso/GenreAccess.php');
+require_once(__DIR__.'/../objetos/DTO/SagaDTO.php');
+require_once(__DIR__.'/../acceso/SagaAccess.php');
 
 
 /*********************************************************
- * Clase con los métodos de genre
+ * Clase con los métodos de saga
  *********************************************************/
-class GenreFacade{
+class SagaFacade{
 	/**
 	 * Recupera todos los registros de la tabla.
-	 * Devuelve un array de objetos genre
+	 * Devuelve un array de objetos SagaDTO
 	 */
 	public function findAll() {
 		$res = array();
 		
-		foreach(GenreAccess::findAll() as $obj) {
+		foreach(SagaAccess::findAll() as $obj) {
 			// Añadimos un objeto por cada elemento obtenido
 			$res[] = self::daoToDto($obj);
 		}
@@ -26,7 +26,7 @@ class GenreFacade{
 	 * Recupera un autor por su id
 	 */ 
 	public function findById($id){
-		$obj = GenreAccess::findById($id);
+		$obj = SagaAccess::findById($id);
 		
 		return self::daoToDto($obj);
 	}
@@ -44,7 +44,7 @@ class GenreFacade{
 		else if($_SESSION['lang'] == 'EN')
 			$name = $dao->getNameEN();
 		
-		$dto = new GenreDTO($dao->getId(),
+		$dto = new SagaDTO($dao->getId(),
 							$name);
 		return $dto;
 	}

@@ -1,8 +1,13 @@
 <?php
 
-class Genre {
-    protected $id;//id
-	protected $Name;//String
+/**
+ * Clase preparada para recoger todos los datos de una Saga. 
+ * Tablas: saga.
+ */
+
+class SagaDTO {
+	protected $id;//id
+	protected $name;//String
     
 	/**Getters/Setters**/
     public function getId() {return $this->id; }
@@ -11,9 +16,9 @@ class Genre {
     public function getName() {return $this->name; }
     public function setName($name) {$this->name = $name; }
     
-    public function __construct($row) {
-        $this->id = $row['id'];
-        $this->name = $row['name'];
+    public function __construct($id, $name) {
+        $this->id = $id;
+        $this->name = $name;
     }
 }
 
