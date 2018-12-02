@@ -4,11 +4,110 @@
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/prueba.css">
-
+	<link rel="stylesheet" href="css/master.css">
+<?php 
+			require_once ('common/includes/heading.html');//Se incluye head
+			require_once ('common/includes/Utilidades.php');
+			//Comenzar session (inicializa variables de sesión)
+			initSession();
+		?>
+	<script type="text/javascript" src="js/prueba.js"></script>
 </head>
 
 <body>
+<!--Barra navegación-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="left">
+		<!--Logo-->
+		<a class="navbar-brand" href="prueba.php">
+			<img src="img/logo.png" width="80" height="80" class="align-top" alt="">
+		</a>
+	</div>
+	<div class="right">
+		<!--Row1-->
+		<div class="d-flex p-2">
+			<div class="col-md-12 top-bar">
+				<div class="container-fluid">
+					<ul class="nav navbar-nav">
+						<!--Contacto-->
+						<li>
+							<a href="#">
+								<span class="glyphicon glyphicon-envelope move-icon"></span>
+								Contact
+							</a>
+						</li>
+						<!--Idioma-->
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+								<span id="language"></span>
+								<span id="lang"><?php echo $_SESSION['lang']?></span>
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu dropdown-content">
+								<li><a href="prueba.php?lang=EN">EN - English</a></li>
+								<li><a href="prueba.php?lang=ES">ES - Español</a></li>
+							</ul>
+						</li>
+						<!--Moneda-->
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+								<?php echo $_SESSION['currency']?>
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu dropdown-content">
+								<li><a href="prueba.php?currency=EURO">EURO €</a></li>
+								<li><a href="prueba.php?currency=USD">USD $</a></li>
+							</ul>
+						</li>
+						<!--Prueba-->
+						<li>
+							<a id="asd" href="#">
+								Espáñia
+							</a>
+						</li><!--
+						<li>
+							<form id="foo">
+								<label for="bar">A bar</label>
+								<input id="bar" name="bar" type="text" value="" />
+
+								<input type="submit" value="Send" />
+							</form>
+						</li>-->
+					</ul>
+					
+					<!--Account-->
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="container">
 	<div class="col-xs-12 col-md-6">
 		<!-- First product box start here-->
