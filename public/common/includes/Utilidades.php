@@ -19,11 +19,11 @@ function get($id){
  */
 function initSession(){
 	session_start();
-	//Currency (por defecto: 'EURO')
+	//Currency (por defecto: '€')
 	if(isset($_GET['currency']))//Si nos llega como parámetro
 		$_SESSION['currency'] = $_GET['currency'];
 	else if(!isset($_SESSION['currency']))//Si no está inicializada
-		$_SESSION['currency'] = 'EURO';
+		$_SESSION['currency'] = '€';
 	//Lang (por defecto: 'ES')
 	if(isset($_GET['lang']))//Si nos llega como parámetro
 		$_SESSION['lang'] = $_GET['lang'];
@@ -37,10 +37,10 @@ function initSession(){
  * Lo transforma a la moneda que esté en sesión
  */
 function getMoney($value){
-	if($_SESSION['currency'] === 'EURO'){
+	if($_SESSION['currency'] === '€'){
 		return $value.'€';//Se devuelve tal y como llega
 	}
-	else if($_SESSION['currency'] === 'USD'){
+	else if($_SESSION['currency'] === '$'){
 		return bcmul($value, 1.13, 2).'$';//Hay que multiplicar por 1.13
 	}
 	//else....
