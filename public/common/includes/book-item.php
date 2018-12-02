@@ -22,6 +22,19 @@ class BookItemHtml{
 		return $res;
 	}
 	
+	/**
+	 * Función que imprime una etiqueta especial sobre el libro
+	 * (Descuentos, últimas uds....)
+	 */
+	function getSpecial($book){
+		//Últimas uds.
+		if($book->getStock() < 10)
+			return '<span id="lastUds" class="tag3 special"></span>';
+		//Más vendido
+		else if(false)
+			return '<span class="tag2 hot">HOT</span>';
+	}
+	
 	
 	/**
 	 * Recibe BookVO.
@@ -34,11 +47,9 @@ class BookItemHtml{
 				<div class="row">
 					<div class="col-md-5 col-xs-5">
 						<div class="product-image"> 
-							<img src="img/books/'.$bookVO->getCover().'" onerror="this.src=\'img/books/default_cover.jpg\'" class="img-responsive"> 
-							<!--<span class="tag2 hot">
-								HOT
-							</span> -->
-						</div>
+							<img src="img/books/'.$bookVO->getCover().'" onerror="this.src=\'img/books/default_cover.jpg\'" class="img-responsive"> '.
+							self::getSpecial($bookVO).
+						'</div>
 					</div>
 					<div class="col-md-7 col-xs-7">
 						<div>
