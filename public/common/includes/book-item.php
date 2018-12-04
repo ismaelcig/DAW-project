@@ -29,10 +29,10 @@ class BookItemHtml{
 	function getSpecial($book){
 		//Últimas uds.
 		if($book->getStock() < 10)
-			return '<span id="lastUds" class="tag3 special"></span>';
+			return '<span id="lastUds" class="tag3 special">Last Uds</span>';
 		//Más vendido
 		else if(false)
-			return '<span class="tag2 hot">HOT</span>';
+			return '<span id="best" class="tag2 hot">Best-Seller</span>';
 	}
 	
 	
@@ -87,10 +87,12 @@ class BookItemHtml{
 						</div>
 						<div class="btn-box">
 							<div class="col-md-12"> 
-								<a href="javascript:void(0);" class="btn btn-danger btn-padding">Add to cart</a>
+								<a href="javascript:void(0);" class="btn btn-danger btn-padding">
+									<span id="addCart">Add to Cart</span>
+								</a>
 								<a href="javascript:void(0);" class="btn btn-info btn-padding">
-									<span class="full-text">More info</span>
-									<span class="short-text">+Info</span>
+									<span id="infoL" class="full-text">More info</span>
+									<span id="infoS" class="short-text">+Info</span>
 								</a>
 							</div>
 						</div>
