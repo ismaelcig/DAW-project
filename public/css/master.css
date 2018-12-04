@@ -1,8 +1,7 @@
 body{
     margin-top:20px;
     background:#eee;
-	/*min-width: 760px;*/
-	min-width: 1185px;
+	min-width: 815px;
 }
 /*Para que no quede debajo de la navbar*/
 #book-container{
@@ -20,17 +19,42 @@ body{
 }
 
 .prod-info-main .product-image {
-    background-color: #EBF8FE;
     display: block;
     max-height: 206px;
     overflow: hidden;
     position: relative;
-    border: 1px solid #CEEFFF;
-    /*padding-top: 40px;*/
 }
 
+/*Large*/
+@media only screen and (min-width:1200px) {
+	.prod-info-main .product-image {
+		height: 206px;/*Igualar altura de todos los book-item*/
+	}
+	.prod-info-main .product-detail {
+		height: 17rem;/*Espacio textos book-item*/
+	}
+}/*Medium*/
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+	.prod-info-main .product-image {
+		height: 180px;/*Igualar altura de todos los book-item*/
+	}
+	.prod-info-main .product-detail {
+		height: 14rem;/*Espacio textos book-item*/
+	}
+}/*Small*/
+@media only screen and (min-width: 766px) and (max-width: 991px) {
+	.prod-info-main .product-image {
+		height: 200px;/*Igualar altura de todos los book-item*/
+	}
+	.prod-info-main .product-detail {
+		height: 15.4rem;/*Espacio textos book-item*/
+	}
+}
+
+
+
 .prod-info-main .product-detail {
-	/*height: 17rem;*/
+	height: 17rem;
     border-bottom: 1px solid #dfe5e9;
     /*padding-bottom: 17px;
     padding-left: 16px;
@@ -296,9 +320,6 @@ body{
     .prod-info-main .product-image {
         border-right: 1px solid #dfe5e9
     }
-	.prod-info-main .product-detail {
-		height: 17rem;
-	}
 	#searchbar{/*SearchBar más grande en pc*/
 		min-width: 400px;
 	}
@@ -313,12 +334,6 @@ body{
     .prod-wrap div[class*=col-xs-7] {
         padding: 0 10px 0 0
     }
-	.prod-info-main .product-detail {
-		height: 14rem;
-	}
-	/*.product:nth-child(6n+3){/*Ajusta float en pantallas pequeñas*
-		clear: both;
-	}*/
 	.product-block .product-detail p.price-container span,	/*Reducir tamaño*/
 	.prod-info-main .product-detail p.price-container span, /* y espacios	*/
 	.shipping table tbody tr td p.price-container span,		/* en pantallas	*/
@@ -403,24 +418,8 @@ body{
 }
 
 
-/**//*
-.container-fluid {
-	min-width: 785px;
-}*/
 
 
-/*Mantener altura de todos los book-item*/
-#book-items .row {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	flex-wrap: wrap;
-}
-#book-items .row > [class*='col-'] {
-	display: flex;
-	flex-direction: column;
-}
 
 /*Ocultar texto corto por defecto*/
 .short-text { display: none; }
@@ -430,4 +429,8 @@ body{
 @media (max-width: 1200px) {
     .short-text { display: inline-block; }
     .full-text { display: none; }
+}
+
+.btn-box > div{
+	text-align: center;
 }
