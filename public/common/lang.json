@@ -1,6 +1,9 @@
 {
   "ES": [
     {
+	  "EN":			"Inglés",
+	  "ES":			"Español",
+	  
       "contact":	"Contacto",
       "language":	"Idioma",
       "currency":	"Moneda",
@@ -19,11 +22,24 @@
 	  "uds":		"Quedan",
 	  "inStock":	"En Stock",
 	  "outStock":	"Agotado",
-	  "noStock":	"Agotado"
+	  "noStock":	"Agotado",
+	  "freeShip":	"Envío Gratis",
+	  "addBucket":	"Añadir a la cesta",
+	  "addWish":	"Añadir a deseados",
+	  "details":	"Detalles del libro",
+	  "isbn":		"ISBN",
+	  "publisher":	"Editorial",
+	  "publDate":	"Fecha Publicación",
+	  "moreFromAuth": "Más del mismo Autor",
+	  "moreFromGenre": "Otros/Mismo Género"
+	  
     }
   ],
   "EN": [
     {
+	  "EN":			"English",
+	  "ES":			"Spanish",
+	  
       "contact":	"Contact",
       "language":	"Language",
       "currency":	"Currency",
@@ -42,7 +58,17 @@
 	  "uds":		"Books left",
 	  "inStock":	"In Stock",
 	  "outStock":	"Out of Stock",
-	  "noStock":	"No Stock"
+	  "noStock":	"No Stock",
+	  "freeShip":	"Free Shipment",
+	  "addBucket":	"Add to bucket",
+	  "addWish":	"Add to wishlist",
+	  "details":	"Book details",
+	  "isbn":		"ISBN",
+	  "publisher":	"Publisher",
+	  "publDate":	"Publication Date",
+	  "moreFromAuth": "More from the Author",
+	  "moreFromGenre": "Others/Same Genre"
+	  
     }
   ]
   

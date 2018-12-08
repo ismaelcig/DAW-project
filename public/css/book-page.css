@@ -9,9 +9,14 @@ body{
 	height: 350px;
 }
 
-.main-container{
-	background: #fff;
+.section-container{
+	/*background: #fff;*/
+	background: #eff3fc;
 	border: 1px solid #CEEFFF;
+	margin-bottom: 10px;
+}
+.section-container h3{/*Título Sección*/
+	border-bottom: 1px solid cornflowerblue;
 }
 
 /******Img******/
@@ -109,17 +114,25 @@ body{
     color: #fff;
     font-weight: bold;
 }
+.add-bucket:hover{
+	background: #ed6e6e;
+}
 .add-wish{/*Añadir a lista de desados*/
 	background: #aad2f3;
 	color: darkslategrey;
 	font-weight: normal;
 }
-
+.add-wish:hover{
+	background: #90bce1;;
+}
 
 /******Detalles del libro******/
 .book-details{
 	/*background-color: #cc66ff;*/
 	background-color: #daedff;
 	border-top: 1px solid darkgray;
-	height: 280px;
+	padding-bottom: 15px;
+}
+.book-details .bold{
+	font-weight: bold;
 }

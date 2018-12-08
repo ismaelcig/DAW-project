@@ -50,7 +50,7 @@ class BookItemHtml{
 				<div class="row">
 					<div class="col-md-5 col-xs-5">
 						<div class="product-image"> 
-							<a href="book-page.php?id='.$bookVO->getId().'">'.
+							<a href="book-page.php?book='.$bookVO->getId().'">'.
 								'<img src="img/books/'.$bookVO->getCover().'" onerror="this.src=\'img/books/default_cover.jpg\'" class="img-responsive"> '.
 								self::getSpecial($bookVO).
 							'</a>
@@ -60,7 +60,7 @@ class BookItemHtml{
 						<div>
 							<div class="product-detail">
 								<h5 class="name">
-									<a href="book-page.php?id='.$bookVO->getId().'">'.
+									<a href="book-page.php?book='.$bookVO->getId().'">'.
 										$bookVO->getTitle().'
 									</a>
 									<a href="index.php?author='.$bookVO->getAuthor()->getId().'">

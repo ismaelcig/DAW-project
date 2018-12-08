@@ -14,7 +14,8 @@ class BookAccess{
 	function findAll() {
 		$lang = $_SESSION['lang'];
 		$query ="SELECT id,author,genre,saga,rating,price,sold,
-					book_id,lang,isbn,cover,title,synopsis,stock,visible
+					book_id,lang,isbn,cover,title,synopsis,stock,visible,
+					publisher,publish_date
 				FROM book, book_lang
 				WHERE id = book_id
 				  AND lang = $lang";
@@ -33,7 +34,8 @@ class BookAccess{
 	function findById($id){
 		$lang = $_SESSION['lang'];
 		$query = "SELECT id,author,genre,saga,rating,price,sold,
-					book_id,lang,isbn,cover,title,synopsis,stock,visible
+					book_id,lang,isbn,cover,title,synopsis,stock,visible,
+					publisher,publish_date
 				FROM book, book_lang
 				WHERE id = book_id
 				  AND id = $id
@@ -50,7 +52,8 @@ class BookAccess{
 	function findBy($genre, $author, $minPrice, $maxPrice){
 		$lang = $_SESSION['lang'];//Idioma de la web
 		$query ="SELECT id,author,genre,saga,rating,price,sold, 
-					book_id,lang,isbn,cover,title,synopsis,stock,visible 
+					book_id,lang,isbn,cover,title,synopsis,stock,visible,
+					publisher,publish_date
 				FROM book, book_lang 
 				WHERE id = book_id 
 				  AND lang = '$lang'

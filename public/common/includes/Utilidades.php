@@ -2,6 +2,16 @@
 
 class Utilidades{
 	/**
+	 * Registra una traza en el log
+	 * Lleva la fecha en el nombre
+	 */
+	function _log($log){
+		$log = '['.date("H:i:s").'] '.$log.PHP_EOL;//Nueva línea
+		file_put_contents($_SERVER["DOCUMENT_ROOT"].
+			'/zProject/logs/log_'.date("j.n.Y").'.log', $log, FILE_APPEND);
+	}
+	
+	/**
 	 * Recibe un id. 
 	 * Trata de recuperar la variable mediante GET
 	 * Devuelve null si no se recibe el parámetro
@@ -19,6 +29,7 @@ class Utilidades{
 	 * Comprueba si nos llegan por GET y lo guarda en SESSION
 	 */
 	function initSession(){
+		self::_log('Entra: initSession()');
 		session_start();
 		//Currency (por defecto: '€')
 		if(isset($_GET['currency']))//Si nos llega como parámetro
@@ -31,6 +42,7 @@ class Utilidades{
 		else if(!isset($_SESSION['lang']))//Si no está inicializada
 			$_SESSION['lang'] = 'ES';
 		
+		self::_log('Sale: initSession()');
 	}
 
 	/**
@@ -53,12 +65,15 @@ class Utilidades{
 	 * Redirecciona a index.php si no vienen
 	 */
 	function required($array){
+		self::_log('Entra: required()');
 		foreach($array as $id){
 			if(!isset($_GET[$id])){
+				self::_log($id.' viene vacío.');
 				header("Location: index.php");
 				die();
 			}
 		}
+		self::_log('Sale: required()');
 	}
 
 	/**
@@ -66,10 +81,13 @@ class Utilidades{
 	 * Redirecciona a index.php si es null
 	 */
 	function requiredObj($obj){
+		self::_log('Entra: requiredObj()');
 		if(null == $obj){
+				self::_log('Era null.');
 			header("Location: index.php");
 			die();
 		}
+		self::_log('Sale: requiredObj()');
 	}
 }
 ?>

@@ -96,6 +96,8 @@ class BookLangDAO extends BookDAO{
 	protected $synopsis;//String
 	protected $stock;//int
 	protected $visible;//boolean
+	protected $publisher;//String
+	protected $publish_date;//YYYY-MM-DD
 	
 	/**Getters/Setters**/
 	public function getBookId(){
@@ -169,6 +171,35 @@ class BookLangDAO extends BookDAO{
 	public function setVisible($visible){
 		$this->visible = $visible;
 	}
+
+	public function getPublisher(){
+		return $this->publisher;
+	}
+
+	public function setPublisher($publisher){
+		$this->publisher = $publisher;
+	}
+
+	/**
+	 * Devuelve la fecha en formato YYYY-MM-DD
+	 */
+	public function getPublish_dateOriginal(){
+		return $this->publish_date;
+	}
+
+	/**
+	 * Devuelve la fecha en formato DD-MM-YYYY
+	 */
+	public function getPublish_date(){
+		return date('d-m-Y', strtotime($this->publish_date));
+	}
+
+	/**
+	 * Guarda la fecha en formato YYYY-MM-DD
+	 */
+	public function setPublish_date($publish_date){
+		$this->publish_date = date('Y-m-d', strtotime($publish_date));
+	}
 	
     
     
@@ -188,6 +219,8 @@ class BookLangDAO extends BookDAO{
         $this->synopsis = $row['synopsis'];
         $this->stock = $row['stock'];
         $this->visible = $row['visible'];
+		$this->publisher = $row['publisher'];
+		$this->publish_date = $row['publish_date'];
     }
 }
 

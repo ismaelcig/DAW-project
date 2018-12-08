@@ -66,7 +66,9 @@ class BookFacade{
 							$dao->getTitle(),
 							$dao->getSynopsis(),
 							$dao->getStock(),
-							$dao->getVisible());
+							$dao->getVisible(),
+							$dao->getPublisher(),
+							$dao->getPublish_date());//En formato DD-MM-YYYY
 		return $dto;
 	}
 }

@@ -17,11 +17,11 @@
 			//Comenzar session (inicializa variables de sesión)
 			Utilidades::initSession();
 			//Nos aseguramos de tener el id del libro
-			Utilidades::required(array('id'));
+			Utilidades::required(array('book'));
 			
 			/***Cargar libro***/
 			//Si ha llegado hasta aquí es que tenemos el id
-			$id = $_GET['id'];
+			$id = $_GET['book'];
 			$book = BookFacade::findById($id);
 			//Nos aseguramos de que existe el libro
 			Utilidades::requiredObj($book);
@@ -41,7 +41,7 @@
 		<div id="container" class="container-fluid">
 			<div class="container">
 				<!--Bloque principal-->
-				<div class="row main-container">
+				<div class="row section-container">
 					<!--Img libro-->
 					<div class="col-md-3 col-xs-7 fixed-height">
 						<div class="book-image">
@@ -60,36 +60,44 @@
 						<!--Mostrar especiales-->
 						<div id="specials">
 							<div class="stock">
-							<?php
-								//Últimas uds.
-								if($book->getStock() == 0){
-									echo '<div class="text-danger">
-											<span class="glyphicon glyphicon-book"></span>
-											<span id="outStock"></span>
-										  </div>';
-								}else if($book->getStock() < 10){
-									echo '<div class="text-warning">
-											<span class="glyphicon glyphicon-book"></span>
-											<span id="uds">Books left</span>: '.$book->getStock().
-										  '</div>';
-								}else{
-									echo '<div class="text-success">
-											<span class="glyphicon glyphicon-book"></span>
-											<span id="inStock"></span>
-										  </div>';
-								}
-								//Más vendido
-								if(false){
-									return '<span id="best" class="tag2 hot">Best-Seller</span>';
-								}
-							?>
+								<?php
+								
+									if($book->getStock() == 0){//En Stock
+										echo '<div class="text-danger">
+												<span class="glyphicon glyphicon-book"></span>
+												<span id="outStock">Out of Stock</span>
+											  </div>';
+									}else if($book->getStock() < 10){//Últimas uds.
+										echo '<div class="text-warning">
+												<span class="glyphicon glyphicon-book"></span>
+												<span id="uds">Books left</span>: '.$book->getStock().
+											  '</div>';
+									}else{//Agotado
+										echo '<div class="text-success">
+												<span class="glyphicon glyphicon-book"></span>
+												<span id="inStock">In Stock</span>
+											  </div>';
+									}
+									//Más vendido
+									if(false){
+										return '<span id="best" class="tag2 hot">Best-Seller</span>';
+									}
+								?>
+								<div class="text-info">
+									<span class="glyphicon glyphicon-plane"></span>
+									<span id="freeShip">Free Shipment</span>
+								</div>
 							</div>
 						</div>
 						
 						<!--Botones-->
 						<div class="btn-box">
-							<a class="add-bucket" href="#">Añadir a la cesta</a>
-							<a class="add-wish" href="#">Añadir a deseados</a>
+							<a class="add-bucket" href="#">
+								<span id="addBucket">Add to bucket</span>
+							</a>
+							<a class="add-wish" href="#">
+								<span id="addWish">Add to wishlist</span>
+							</a>
 						</div>
 						
 					</div>
@@ -109,22 +117,41 @@
 						
 					</div>
 					
+					
+					
 					<!--Detalles del libro-->
 					<div class="col-md-12 col-xs-12 book-details">
-						Detalles del libro
+						<h3><span id="details">Book Details</span></h3>
+						<div class="row">
+							<div class="col-md-3 col-xs-6">
+								<span id="isbn" class="bold">ISBN</span>: <?php echo $book->getIsbn()?>
+							</div>
+							<div class="col-md-3 col-xs-6">
+								<span id="language" class="bold">Language</span>: 
+								<span id="<?php echo $book->getLang()?>"></span>
+							</div>
+							<div class="col-md-3 col-xs-6">
+								<span id="publisher" class="bold">Publisher</span>: 
+								<?php echo $book->getPublisher()?>
+							</div>
+							<div class="col-md-3 col-xs-6">
+								<span id="publDate" class="bold">Publication Date</span>: 
+								<?php echo $book->getPublish_date()?>
+							</div>
+						</div>
 					</div>
 					
 				</div>
 				<!--Relacionado con el Autor-->
-				<div class="row">
-					<div class="col-md-12 fixed-height" style="background-color: #ccceff;">
-						Relacionado con el Autor
+				<div class="row section-container">
+					<div class="col-md-12 fixed-height"><!-- style="background-color: #ccceff;"-->
+						<h3><span id="moreFromAuth">More from the Author</span></h3>
 					</div>
 				</div>
 				<!--Otros/Relacionado con el Género-->
-				<div class="row">
-					<div class="col-md-12 fixed-height" style="background-color: #ccefff;">
-						Otros/Relacionado con el Género
+				<div class="row section-container">
+					<div class="col-md-12 fixed-height"><!--#ccefff-->
+						<h3><span id="moreFromGenre">Others/Same Genre</span></h3>
 					</div>
 				</div>
 			</div>

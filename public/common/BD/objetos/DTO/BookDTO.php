@@ -22,6 +22,8 @@ class BookDTO {
 	protected $synopsis;//String
 	protected $stock;//int
 	protected $visible;//boolean
+	protected $publisher;//String
+	protected $publish_date;//DD-MM-YYYY
 	
 	
 	/**Getters/Setters**/
@@ -136,11 +138,28 @@ class BookDTO {
 	public function setVisible($visible){
 		$this->visible = $visible;
 	}
+
+	public function getPublisher(){
+		return $this->publisher;
+	}
+
+	public function setPublisher($publisher){
+		$this->publisher = $publisher;
+	}
+
+	public function getPublish_date(){
+		return $this->publish_date;
+	}
+
+	public function setPublish_date($publish_date){
+		$this->publish_date = $publish_date;
+	}
 	
     
     
     public function __construct($id,$author,$genre,$saga,$rating,$price,$sold,
-				$lang,$isbn,$cover,$title,$synopsis,$stock,$visible)
+				$lang,$isbn,$cover,$title,$synopsis,$stock,$visible,$publisher,
+				$publish_date)
 	{
         $this->id = $id;
         $this->author = $author;
@@ -157,6 +176,8 @@ class BookDTO {
         $this->synopsis = $synopsis;
         $this->stock = $stock;
         $this->visible = $visible;
+        $this->publisher = $publisher;
+        $this->publish_date = $publish_date;
     }
 }
 

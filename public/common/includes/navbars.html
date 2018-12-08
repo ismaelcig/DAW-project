@@ -1,3 +1,9 @@
+<?php 
+//Parámetros que debemos conservar si se recarga la página
+$params = '';
+if(isset($_GET['book'])) $params.= '&book='.$_GET['book'];
+?>
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div>
 		<!--Logo-->
@@ -27,8 +33,8 @@
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu dropdown-content">
-								<li><a href="?lang=EN">EN - English</a></li>
-								<li><a href="?lang=ES">ES - Español</a></li>
+								<li><a href="?lang=EN<?php echo $params;?>">EN - English</a></li>
+								<li><a href="?lang=ES<?php echo $params;?>">ES - Español</a></li>
 							</ul>
 						</li>
 						<!--Moneda-->
@@ -39,8 +45,8 @@
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu dropdown-content">
-								<li><a href="?currency=€">EUR €</a></li>
-								<li><a href="?currency=$">USD $</a></li>
+								<li><a href="?currency=€<?php echo $params;?>">EUR €</a></li>
+								<li><a href="?currency=$<?php echo $params;?>">USD $</a></li>
 							</ul>
 						</li>
 					</ul>
