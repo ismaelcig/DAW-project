@@ -3,10 +3,6 @@ body{
     background:#eee;
 	min-width: 815px;
 }
-/*Para que no quede debajo de la navbar*/
-#book-container{
-	margin-top: 110px;
-}
 
 .prod-info-main {
     border: 1px solid #CEEFFF;
@@ -192,8 +188,11 @@ body{
     background-color: #a90329;
 }
 
-.prod-wrap .product-image span.special {
+.prod-wrap .product-image span.lastUds {/*Últimas unidades*/
 	background-color: #ffb366;
+}
+.prod-wrap .product-image span.oos {/*Out of Stock*/
+	background-color: #ef3737;
 }
 .shop-btn {
     position: relative
@@ -350,7 +349,7 @@ body{
 	}
 }
 
-/***/
+/*Eliminar padding*/
 .no-padding{
 	padding: 0px;
 }
@@ -367,59 +366,6 @@ body{
 	bottom: 0;
 }
 
-/*Cabecera*/
-.icono{
-	height: 80px;
-	padding: 0;
-}
-/*.cabecera{
-	margin-left: 90px;
-}*/
-
-.move-icon{
-	left: -5px;
-	top: 2px;
-}
-.top-bar{
-	border-radius: 4px 4px 0 0;
-	margin-bottom: 0;
-}
-.bottom-bar{
-	border-radius: 0 0 4px 4px;
-	margin-top: 0;
-}
-
-/*Dropdown*/
-.dropdown-content {
-    position: absolute;
-    min-width: 160px;
-    z-index: 3;
-}
-.dropdown:hover .dropdown-content {
-	display: block;
-}
-
-/*Evitar collapse de la navbar*/
-.navbar-collapse .collapse {
-	display: block!important;
-}
-.navbar-nav>li, .navbar-nav {
-	float: left !important;
-}
-.navbar-nav.navbar-right:last-child {
-	margin-right: -15px !important;
-}
-.navbar-right {
-	float: right!important;
-}
-.right{
-	margin-left: 110px;
-	min-width: 765px;
-}
-
-
-
-
 
 /*Ocultar texto corto por defecto*/
 .short-text { display: none; }
@@ -430,7 +376,7 @@ body{
     .short-text { display: inline-block; }
     .full-text { display: none; }
 }
-
+/*Centrar botones book-item*/
 .btn-box > div{
 	text-align: center;
 }

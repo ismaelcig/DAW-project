@@ -1,32 +1,48 @@
 {
   "ES": [
     {
-      "contact": "Contacto",
-      "language": "Idioma",
-      "currency": "Moneda",
-      "genres": "Géneros",
-      "signup": " Registrarse",
-      "signin": " Entrar",
-      "searchbar": "Buscar libros...",
-      "addCart": "Añadir",
-      "infoL": "Más info",
-      "infoS": "+info",
-	  "lastUds": "Últimos"
+      "contact":	"Contacto",
+      "language":	"Idioma",
+      "currency":	"Moneda",
+      "genres":		"Géneros",
+      "signup": 	" Registrarse",
+      "signin": 	" Entrar",
+      "searchbar":	"Buscar libros...",
+      "addCart":	"Añadir",
+      "infoL":		"Más info",
+      "infoS":		"+info",
+	  "lastUds":	"Últimos",
+	  
+	  "author":		"Autor",
+	  "readMore":	"Leer más...",
+	  "readLess":	"Leer menos",
+	  "uds":		"Quedan",
+	  "inStock":	"En Stock",
+	  "outStock":	"Agotado",
+	  "noStock":	"Agotado"
     }
   ],
   "EN": [
     {
-      "contact": "Contact",
-      "language": "Language",
-      "currency": "Currency",
-      "genres": "Genres",
-      "signup": "Sign Up",
-      "signin": "Sign In",
-      "searchbar": "Search books...",
-      "addCart": "Add to Cart",
-      "infoL": "More info",
-      "infoS": "+info",
-	  "lastUds": "Last Uds"
+      "contact":	"Contact",
+      "language":	"Language",
+      "currency":	"Currency",
+      "genres":		"Genres",
+      "signup": 	"Sign Up",
+      "signin": 	"Sign In",
+      "searchbar":	"Search books...",
+      "addCart":	"Add to Cart",
+      "infoL":		"More info",
+      "infoS":		"+info",
+	  "lastUds":	"Last Uds",
+	  
+	  "author":		"Author",
+	  "readMore":	"Read more...",
+	  "readLess":	"Read less",
+	  "uds":		"Books left",
+	  "inStock":	"In Stock",
+	  "outStock":	"Out of Stock",
+	  "noStock":	"No Stock"
     }
   ]
   

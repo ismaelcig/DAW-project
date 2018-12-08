@@ -28,11 +28,14 @@ class BookItemHtml{
 	 */
 	function getSpecial($book){
 		//Últimas uds.
-		if($book->getStock() < 10)
-			return '<span id="lastUds" class="tag3 special">Last Uds</span>';
+		if($book->getStock() == 0){
+			return '<span id="noStock" class="tag3 oos">No Stock</span>';
+		}else if($book->getStock() < 10){
+			return '<span id="lastUds" class="tag3 lastUds">Last Uds</span>';
 		//Más vendido
-		else if(false)
+		}else if(false){
 			return '<span id="best" class="tag2 hot">Best-Seller</span>';
+		}
 	}
 	
 	
@@ -55,7 +58,7 @@ class BookItemHtml{
 						<div>
 							<div class="product-detail">
 								<h5 class="name">
-									<a href="#">'.//Abrir página del libro
+									<a href="book-page.php?id='.$bookVO->getId().'">'.
 										$bookVO->getTitle().'
 									</a>
 									<a href="index.php?author='.$bookVO->getAuthor()->getId().'">
@@ -78,7 +81,7 @@ class BookItemHtml{
 									<div>
 										<p class="price-container">
 											<span>'.
-											getMoney($bookVO->getPrice()).
+											Utilidades::getMoney($bookVO->getPrice()).
 											'</span>
 										</p>
 									</div>

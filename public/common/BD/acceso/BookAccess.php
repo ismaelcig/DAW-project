@@ -31,11 +31,17 @@ class BookAccess{
 	 * Recupera un género por su id
 	 */ 
 	function findById($id){
-		$query = "SELECT id,author,genre,saga,rating,price,sold 
-					FROM book WHERE id = $id";
+		$lang = $_SESSION['lang'];
+		$query = "SELECT id,author,genre,saga,rating,price,sold,
+					book_id,lang,isbn,cover,title,synopsis,stock,visible
+				FROM book, book_lang
+				WHERE id = book_id
+				  AND id = $id
+				  AND lang = '$lang'";
 		$row = ejecutarConsulta($query);
-		
-		return new BookLangDAO($row[0]);
+		if(null != $row)//Por si no lo encuentra
+			return new BookLangDAO($row[0]);
+		else return null;
 	}
 	
 	/**
@@ -48,8 +54,7 @@ class BookAccess{
 				FROM book, book_lang 
 				WHERE id = book_id 
 				  AND lang = '$lang'
-				  AND stock > 0 
-				  AND visible = 1 ";
+				  AND visible = 1 ";//AND stock > 0 
 		//Filtros
 		if(isset($genre)){
 			$query.= " AND genre = $genre ";
