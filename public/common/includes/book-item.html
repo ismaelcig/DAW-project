@@ -1,0 +1,66 @@
+<?php require_once('book-item.php'); ?>
+	
+	
+<div class="col-md-4 col-xs-6">
+	<div class="book-info-main prod-wrap clearfix">
+		<div class="row">
+			<div class="col-md-5 col-xs-5">
+				<div class="book-image"> 
+					<a href="book-page.php?book=<?php echo $bookVO->getId()?>">
+						<img src="img/books/<?php echo $bookVO->getCover()?>" onerror="this.src=\'img/books/default_cover.jpg\'" class="img-responsive">
+						<?php echo BookItem::getSpecial($bookVO)?>
+					</a>
+				</div>
+			</div>
+			<div class="col-md-7 col-xs-7">
+				<div>
+					<div class="product-detail">
+						<h5 class="name">
+							<a href="book-page.php?book=<?php echo $bookVO->getId()?>">
+								<?php echo $bookVO->getTitle()?>
+							</a>
+							<a href="index.php?author=<?php echo $bookVO->getAuthor()->getId()?>">
+								<span><?php echo $bookVO->getAuthor()->getName()?></span>
+							</a>
+							<a href="index.php?genre=<?php echo $bookVO->getGenre()->getId()?>">
+								<span><?php echo $bookVO->getGenre()->getName()?></span>
+							</a>
+						</h5>
+						<div class="product-info smart-form bottom">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="rating">
+										<?php 
+											echo BookItem::getHtmlStars($bookVO->getRating());
+											echo ' '.$bookVO->getRating();?>
+									</div>
+								</div>
+							</div>
+							<div>
+								<p class="price-container">
+									<span>
+										<?php echo Utilidades::getMoney($bookVO->getPrice())?>
+									</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="btn-box">
+					<div class="col-md-12"> 
+						<a href="javascript:void(0);" 
+							<?php if($bookVO->getStock()==0) echo 'disabled'?>
+							class="btn add-bucket btn-padding" role="button">
+								<span id="addCart">Add to Cart</span>
+						</a>
+						<a href="book-page.php?book=<?php echo $bookVO->getId()?>" 
+							class="btn btn-info btn-padding">
+								<span id="infoL" class="full-text">More info</span>
+								<span id="infoS" class="short-text">+Info</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -88,27 +88,25 @@ body{
 	border-top: 1px solid cornflowerblue;
     padding-top: 1.5rem;
     margin-top: 1.5rem;
+	margin-right: 15px;
     text-align: center;
 	position: absolute;
 	bottom: 0;
-	margin-right: 15px;
 }
 .pay-box .btn-box a{/*Botones*/
 	margin-bottom: 1rem;
-    display: block;
     width: 100%;
     line-height: 4.4rem;
     height: 4.4rem;
     padding: 0 1.7rem;
     border: 0;
     text-decoration: none;
-    text-align: center;
     border-radius: .6rem;
-    cursor: pointer;
     box-shadow: none;
     display: inline-block;
     transition: background-color .2s;
 }
+
 .add-bucket{/*Añadir al Carro*/
     background: #db6969;
     color: #fff;
@@ -135,4 +133,29 @@ body{
 }
 .book-details .bold{
 	font-weight: bold;
+}
+
+
+
+
+/*Botones "Anterior" y "Siguiente"*/
+.change-book{
+	position: fixed;
+	top: 110px;
+}
+.change-book a{
+	color: #e7e7e7;
+	background-color: #aaa;
+	border-color: #717171;
+}
+.change-book a:disabled{
+	color: #d7d4d4;
+	background-color: #c3c3c3;
+	border-color: #a8a5a5;
+}
+#previous{
+	left: 0;
+}
+#next{
+	right: 0;
 }

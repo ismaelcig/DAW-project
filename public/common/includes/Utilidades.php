@@ -42,7 +42,7 @@ class Utilidades{
 		else if(!isset($_SESSION['lang']))//Si no está inicializada
 			$_SESSION['lang'] = 'ES';
 		
-		self::_log('Sale: initSession()');
+		self::_log('Sale:  initSession()');
 	}
 
 	/**
@@ -73,7 +73,7 @@ class Utilidades{
 				die();
 			}
 		}
-		self::_log('Sale: required()');
+		self::_log('Sale:  required()');
 	}
 
 	/**
@@ -87,7 +87,7 @@ class Utilidades{
 			header("Location: index.php");
 			die();
 		}
-		self::_log('Sale: requiredObj()');
+		self::_log('Sale:  requiredObj()');
 	}
 }
 ?>

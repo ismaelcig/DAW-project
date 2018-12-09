@@ -92,8 +92,9 @@
 						
 						<!--Botones-->
 						<div class="btn-box">
-							<a class="add-bucket" href="#">
-								<span id="addBucket">Add to bucket</span>
+							<a class="btn add-bucket" <?php if($book->getStock()==0) echo 'disabled'?>
+								href="#" role="button">
+									<span id="addBucket">Add to bucket</span>
 							</a>
 							<a class="add-wish" href="#">
 								<span id="addWish">Add to wishlist</span>
@@ -144,17 +145,36 @@
 				</div>
 				<!--Relacionado con el Autor-->
 				<div class="row section-container">
-					<div class="col-md-12 fixed-height"><!-- style="background-color: #ccceff;"-->
+					<div class="col-md-12 fixed-height">
 						<h3><span id="moreFromAuth">More from the Author</span></h3>
+						<?php
+							foreach(
+								BookFacade::
+									findBy(null, $book->getAuthor(), null, null)
+								as $bookVO)
+							{//Se crea una caja por cada libro
+								include('common/includes/book-item-sm.html');
+							}
+						
+						
+						?>
+						
 					</div>
 				</div>
 				<!--Otros/Relacionado con el Género-->
 				<div class="row section-container">
-					<div class="col-md-12 fixed-height"><!--#ccefff-->
+					<div class="col-md-12 fixed-height">
 						<h3><span id="moreFromGenre">Others/Same Genre</span></h3>
 					</div>
 				</div>
 			</div>
+			
+			
+			
+			
+			
+			
+			
 			
 			
 			<!--Botón Volver arriba-->
@@ -162,6 +182,32 @@
 				href="#" role="button">
 					<span class="glyphicon glyphicon-chevron-up"></span>
 			</a>
+			
+			<!--Botones Anterior y Siguiente-->
+			<div id="previous" class="change-book">
+				<a class="btn btn-lg" role="button"
+					<?php
+						if($_GET['book']==1){//Ya es el primero
+							echo ' disabled ';
+							echo 'href="javascript:void(0);"';
+						}else{
+							/**Se hace esto con el fin de evitar
+							 * tener que hacer una consulta a BD
+							 * para ver cual es el siguiente libro*/
+							echo 'href="?book='.($_GET['book']-1).'"';
+						}
+					?>
+					>
+						<span class="glyphicon glyphicon-chevron-left"></span>
+				</a>
+			</div>
+			<div id="next" class="change-book">
+				<a class="btn btn-lg" <?php if(false) echo 'disabled'?> role="button"
+					href="?book=<?php echo $_GET['book']+1?>">
+						<span class="glyphicon glyphicon-chevron-right"></span>
+				</a>
+			</div>
+			
 		</div>
 	</body>
 </html>

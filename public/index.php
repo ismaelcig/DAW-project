@@ -15,6 +15,7 @@
 		?>
 		<!--CSS de esta página-->
 		<link rel="stylesheet" href="css/master.css">
+		<link rel="stylesheet" href="css/book-item.css">
 	</head>
 	<body>
 		<!--Barra navegación-->
@@ -24,9 +25,8 @@
 			<div id="book-items" class="container">
 				<?php
 					/***Cargar libros***/
-					require_once ('common/includes/book-item.php');
 					require_once ('common/BD/fachadas/BookFacade.php');
-					require_once ('common/BD/objetos/VOs/BookVO.php');
+					require_once ('common/BD/objetos/VO/BookVO.php');
 					//Variables por las que filtrar
 					$genre   = Utilidades::get('genre');
 					$author  = Utilidades::get('author');
@@ -36,9 +36,9 @@
 					foreach(
 						BookFacade::
 							findBy($genre, $author, $minPrice, $maxPrice)
-						as $bVO)
-					{
-						new BookItemHtml($bVO);
+						as $bookVO)
+					{//Se crea una caja por cada libro
+						include('common/includes/book-item.html');
 					}
 				?>
 			</div>
