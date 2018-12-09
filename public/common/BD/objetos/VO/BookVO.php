@@ -19,6 +19,8 @@ class BookVO {
 	protected $synopsis;//String
 	protected $stock;//int
 	protected $visible;//boolean
+	protected $publisher;//String
+	protected $publish_date;//DD-MM-YYYY
 	
 	/**Getters/Setters**/
 	public function getId(){
@@ -132,6 +134,22 @@ class BookVO {
 	public function setVisible($visible){
 		$this->visible = $visible;
 	}
+
+	public function getPublisher(){
+		return $this->publisher;
+	}
+
+	public function setPublisher($publisher){
+		$this->publisher = $publisher;
+	}
+
+	public function getPublish_date(){
+		return $this->publish_date;
+	}
+
+	public function setPublish_date($publish_date){
+		$this->publish_date = $publish_date;
+	}
 	
     
     /**
@@ -198,6 +216,12 @@ class BookVO {
 		}
 		if(isset($row['visible'])){
 			$this->visible = $row['visible'];
+		}
+		if(isset($row['publisher'])){
+			$this->publisher = $row['publisher'];
+		}
+		if(isset($row['publish_date'])){
+			$this->publish_date = $row['publish_date'];
 		}
     }
 }

@@ -1,32 +1,74 @@
 {
   "ES": [
     {
-      "contact": "Contacto",
-      "language": "Idioma",
-      "currency": "Moneda",
-      "genres": "Géneros",
-      "signup": " Registrarse",
-      "signin": " Entrar",
-      "searchbar": "Buscar libros...",
-      "addCart": "Añadir",
-      "infoL": "Más info",
-      "infoS": "+info",
-	  "lastUds": "Últimos"
+	  "EN":			"Inglés",
+	  "ES":			"Español",
+	  
+      "contact":	"Contacto",
+      "language":	"Idioma",
+      "currency":	"Moneda",
+      "genres":		"Géneros",
+      "signup": 	" Registrarse",
+      "signin": 	" Entrar",
+      "searchbar":	"Buscar libros...",
+      "addCart":	"Añadir",
+      "infoL":		"Más info",
+      "infoS":		"+info",
+	  "lastUds":	"Últimos",
+	  
+	  "author":		"Autor",
+	  "readMore":	"Leer más...",
+	  "readLess":	"Leer menos",
+	  "uds":		"Quedan",
+	  "inStock":	"En Stock",
+	  "outStock":	"Agotado",
+	  "noStock":	"Agotado",
+	  "freeShip":	"Envío Gratis",
+	  "addBucket":	"Añadir a la cesta",
+	  "addWish":	"Añadir a deseados",
+	  "details":	"Detalles del libro",
+	  "isbn":		"ISBN",
+	  "publisher":	"Editorial",
+	  "publDate":	"Fecha Publicación",
+	  "moreFromAuth": "Más del mismo Autor",
+	  "moreFromGenre": "Otros/Mismo Género"
+	  
     }
   ],
   "EN": [
     {
-      "contact": "Contact",
-      "language": "Language",
-      "currency": "Currency",
-      "genres": "Genres",
-      "signup": "Sign Up",
-      "signin": "Sign In",
-      "searchbar": "Search books...",
-      "addCart": "Add to Cart",
-      "infoL": "More info",
-      "infoS": "+info",
-	  "lastUds": "Last Uds"
+	  "EN":			"English",
+	  "ES":			"Spanish",
+	  
+      "contact":	"Contact",
+      "language":	"Language",
+      "currency":	"Currency",
+      "genres":		"Genres",
+      "signup": 	"Sign Up",
+      "signin": 	"Sign In",
+      "searchbar":	"Search books...",
+      "addCart":	"Add to Cart",
+      "infoL":		"More info",
+      "infoS":		"+info",
+	  "lastUds":	"Last Uds",
+	  
+	  "author":		"Author",
+	  "readMore":	"Read more...",
+	  "readLess":	"Read less",
+	  "uds":		"Books left",
+	  "inStock":	"In Stock",
+	  "outStock":	"Out of Stock",
+	  "noStock":	"No Stock",
+	  "freeShip":	"Free Shipment",
+	  "addBucket":	"Add to bucket",
+	  "addWish":	"Add to wishlist",
+	  "details":	"Book details",
+	  "isbn":		"ISBN",
+	  "publisher":	"Publisher",
+	  "publDate":	"Publication Date",
+	  "moreFromAuth": "More from the Author",
+	  "moreFromGenre": "Others/Same Genre"
+	  
     }
   ]
   

@@ -1,9 +1,6 @@
 <?php
 
-/*********************************************************
- * Clase que crea un elemento html para mostrar por pantalla
- *********************************************************/
-class BookItemHtml{
+class BookItem{
 	/**
 	 * Función que recibe el rating de un libro
 	 * y devuelve el html con las estrellas para indicarlo visualmente
@@ -21,85 +18,21 @@ class BookItemHtml{
 		}
 		return $res;
 	}
-	
+
 	/**
 	 * Función que imprime una etiqueta especial sobre el libro
 	 * (Descuentos, últimas uds....)
 	 */
 	function getSpecial($book){
 		//Últimas uds.
-		if($book->getStock() < 10)
-			return '<span id="lastUds" class="tag3 special"></span>';
+		if($book->getStock() == 0){
+			return '<span id="noStock" class="tag3 oos">No Stock</span>';
+		}else if($book->getStock() < 10){
+			return '<span id="lastUds" class="tag3 lastUds">Last Uds</span>';
 		//Más vendido
-		else if(false)
-			return '<span class="tag2 hot">HOT</span>';
+		}else if(false){
+			return '<span id="best" class="tag2 hot">Best-Seller</span>';
+		}
 	}
-	
-	
-	/**
-	 * Recibe BookVO.
-	 * Imprime html con los datos.
-	 */
-	function __construct($bookVO){
-		echo
-		'<div class="col-md-4 col-xs-6 product">
-			<div class="prod-info-main prod-wrap clearfix">
-				<div class="row">
-					<div class="col-md-5 col-xs-5">
-						<div class="product-image"> 
-							<img src="img/books/'.$bookVO->getCover().'" onerror="this.src=\'img/books/default_cover.jpg\'" class="img-responsive"> '.
-							self::getSpecial($bookVO).
-						'</div>
-					</div>
-					<div class="col-md-7 col-xs-7">
-						<div>
-							<div class="product-detail">
-								<h5 class="name">
-									<a href="#">'.//Abrir página del libro
-										$bookVO->getTitle().'
-									</a>
-									<a href="index.php?author='.$bookVO->getAuthor()->getId().'">
-										<span>'.$bookVO->getAuthor()->getName().'</span>
-									</a>
-									<a href="index.php?genre='.$bookVO->getGenre()->getId().'">
-										<span>'.$bookVO->getGenre()->getName().'</span>
-									</a>
-								</h5>
-								<div class="product-info smart-form bottom">
-									<div class="row">
-										<div class="col-md-12">
-											<div class="rating">'.
-												self::getHtmlStars($bookVO->getRating()).
-												' '.
-												$bookVO->getRating().
-											'</div>
-										</div>
-									</div>
-									<div>
-										<p class="price-container">
-											<span>'.
-											getMoney($bookVO->getPrice()).
-											'</span>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="btn-box">
-							<div class="col-md-12"> 
-								<a href="javascript:void(0);" class="btn btn-danger btn-padding">Add to cart</a>
-								<a href="javascript:void(0);" class="btn btn-info btn-padding">
-									<span class="full-text">More info</span>
-									<span class="short-text">+Info</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>';
-
-	}
-	
 }
 ?>

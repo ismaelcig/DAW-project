@@ -1,0 +1,161 @@
+body{
+    margin-top:20px;
+    background:#eee;
+	min-width: 815px;
+}
+
+/*Altura de los elementos principales*/
+.fixed-height{
+	height: 350px;
+}
+
+.section-container{
+	/*background: #fff;*/
+	background: #eff3fc;
+	border: 1px solid #CEEFFF;
+	margin-bottom: 10px;
+}
+.section-container h3{/*Título Sección*/
+	border-bottom: 1px solid cornflowerblue;
+}
+
+/******Img******/
+.book-image img{
+	height: 350px;
+	margin: auto;
+}
+
+/******Parte central******/
+/*.synopsis{
+	height: 200px;
+	line-height: 20px;/* =Height/nº líneas a mostrar *//*
+	overflow: hidden;
+}*/
+.book-data{
+	/*background-color: #cce6ff;*/
+	background-color: #daedff;
+	min-height: 350px;
+	margin: 0px 5px 5px -5px;
+	border-top: 1px solid darkgray;
+}
+/*Botón "Leer más..."*/
+.more-less{
+	font-weight: bold;
+	cursor: pointer;
+}
+/*En resoluciones pequeñas*/
+@media only screen and (max-width: 991px){
+	.more-less{/*Se oculta el botón de expandir*/
+		display: none;
+	}
+	.book-data{/*Adaptamos margenes*/
+		margin: 5px 0px 5px 0px;
+		min-height: 1px;
+	}
+}
+
+
+
+
+/******Caja de pago******/
+.pay-box{
+	background-color: #daedff;
+	border: 4px groove #3385ff;
+	height: 350px;
+	position: relative;
+}
+/**/
+.price{
+	font-size: 3rem;
+	color: #21c2f8;
+	border-bottom: 1px solid cornflowerblue;
+}
+/*Atributos comunes etiquetas especiales*/
+#specials{
+	font-size: x-large;
+	/*color: #49ae15;*/
+	font-weight: bold;
+}
+
+/*Cambiamos el color del icono*/
+.glyphicon-book{
+	color: #de9d5a;
+}
+
+
+/*Caja Botones*/
+.pay-box .btn-box{
+	border-top: 1px solid cornflowerblue;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+	margin-right: 15px;
+    text-align: center;
+	position: absolute;
+	bottom: 0;
+}
+.pay-box .btn-box a{/*Botones*/
+	margin-bottom: 1rem;
+    width: 100%;
+    line-height: 4.4rem;
+    height: 4.4rem;
+    padding: 0 1.7rem;
+    border: 0;
+    text-decoration: none;
+    border-radius: .6rem;
+    box-shadow: none;
+    display: inline-block;
+    transition: background-color .2s;
+}
+
+.add-bucket{/*Añadir al Carro*/
+    background: #db6969;
+    color: #fff;
+    font-weight: bold;
+}
+.add-bucket:hover{
+	background: #ed6e6e;
+}
+.add-wish{/*Añadir a lista de desados*/
+	background: #aad2f3;
+	color: darkslategrey;
+	font-weight: normal;
+}
+.add-wish:hover{
+	background: #90bce1;;
+}
+
+/******Detalles del libro******/
+.book-details{
+	/*background-color: #cc66ff;*/
+	background-color: #daedff;
+	border-top: 1px solid darkgray;
+	padding-bottom: 15px;
+}
+.book-details .bold{
+	font-weight: bold;
+}
+
+
+
+
+/*Botones "Anterior" y "Siguiente"*/
+.change-book{
+	position: fixed;
+	top: 110px;
+}
+.change-book a{
+	color: #e7e7e7;
+	background-color: #aaa;
+	border-color: #717171;
+}
+.change-book a:disabled{
+	color: #d7d4d4;
+	background-color: #c3c3c3;
+	border-color: #a8a5a5;
+}
+#previous{
+	left: 0;
+}
+#next{
+	right: 0;
+}

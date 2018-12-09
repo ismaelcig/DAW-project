@@ -1,0 +1,295 @@
+/**/
+.book-info-main {
+    border: 1px solid #CEEFFF;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    background: #fff;
+    padding: 6px;
+    -webkit-box-shadow: 0 1px 4px 0 rgba(21,180,255,0.5);
+    box-shadow: 0 1px 1px 0 rgba(21,180,255,0.5);
+}
+
+.book-info-main .book-image {
+    display: block;
+    max-height: 206px;
+    overflow: hidden;
+    position: relative;
+}
+
+/*Large*/
+@media only screen and (min-width:1200px) {
+	.book-info-main .book-image {
+		height: 206px;/*Igualar altura de todos los book-item*/
+		border-right: 1px solid #dfe5e9;
+	}
+	.book-info-main .product-detail {
+		height: 17rem;/*Espacio textos book-item*/
+	}
+}/*Medium*/
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+	.book-info-main .book-image {
+		height: 180px;/*Igualar altura de todos los book-item*/
+	}
+	.book-info-main .product-detail {
+		height: 14rem;/*Espacio textos book-item*/
+	}
+}/*Small*/
+@media only screen and (min-width: 766px) and (max-width: 991px) {
+	.book-info-main .book-image {
+		height: 200px;/*Igualar altura de todos los book-item*/
+	}
+	.book-info-main .product-detail {
+		height: 15.4rem;/*Espacio textos book-item*/
+	}
+}
+
+
+
+.book-info-main .product-detail {
+	height: 17rem;
+    border-bottom: 1px solid #dfe5e9;
+    position: relative;
+    background: #fff
+}
+
+.book-info-main .product-detail h5 a span {
+    color: #9aa7af;
+    display: block;
+    font-size: 13px
+}
+/*
+.book-info-main .product-detail span.sale {
+    background-color: #21c2f8
+}*/
+/*
+.book-info-main .product-detail span.discount {
+    background-color: #71e134
+}*/
+/*
+.book-info-main .product-detail span.hot {
+    background-color: #fa9442
+}*/
+/*
+.book-info-main .description {
+    font-size: 12.5px;
+    line-height: 20px;
+    padding: 10px 14px 16px 19px;
+    background: #fff
+}*/
+
+.book-info-main .product-info {
+    padding: 5px 15px 5px 15px
+}
+/*Botón Añadir*/
+.add-bucket {
+    background: #db6969;
+	color: #fff;
+	/*font-weight: bold;*/
+}
+.add-bucket:hover {
+    background: #ed6e6e;
+}
+/*
+.book-info-main name.a {
+    padding: 5px 10px;
+    margin-left: 16px
+}*/
+
+/*span precio*/
+/*.product-block .product-detail p.price-container span,*/
+.book-info-main .product-detail p.price-container span/*,
+.shipping table tbody tr td p.price-container span,
+.shopping-items table tbody tr td p.price-container span*/ {
+    color: #21c2f8;
+    font-family: Lato, sans-serif;
+    font-size: 24px;
+    line-height: 20px
+}
+
+@media only screen and (min-width:1201px) {
+    .book-info-main div[class*=col-md-4] {
+        padding-right: 0
+    }/*
+    .book-info-main .book-image {
+        border-right: 1px solid #dfe5e9;
+    }*/
+}
+@media only screen and (max-width:1200px) {
+    .book-info-main div[class*=col-xs-6] {
+        padding-right: 0
+    }
+	/*Reducir tamaño y espacios en pantallas pequeñas*/
+	.book-info-main .product-detail p.price-container span {
+		font-size: 20px;
+		line-height: 15px
+	}
+	.book-info-main .product-info{
+		padding-bottom: 0;
+		padding-top: 0;
+	}
+}
+
+
+.prod-wrap .book-image span.tag2 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    padding: 10px 0;
+    color: #fff;
+    font-size: 11px;
+    text-align: center
+}
+
+.prod-wrap .book-image span.tag3 {
+    position: absolute;
+	top: 5px;
+	right: 5px;
+    width: 60px;
+    height: 36px;
+    border-radius: 50%;
+    padding: 10px 0;
+	color: #000;
+	font-size: 12px;
+    text-align: center;
+	text-shadow: 1px 0px 0px #444;
+	font-family: Verdana,sans-serif;
+}
+
+.prod-wrap .book-image span.sale {
+    background-color: #57889c;
+}
+
+.prod-wrap .book-image span.hot {
+    background-color: #a90329;
+}
+
+.prod-wrap .book-image span.lastUds {/*Últimas unidades*/
+	background-color: #ffb366;
+}
+.prod-wrap .book-image span.oos {/*Out of Stock*/
+	background-color: #ef3737;
+}
+
+
+
+
+/****************************************************************************
+*****************************************************************************
+*****UNCHECKED***************************************************************
+*****************************************************************************
+*****************************************************************************/
+/*.product-detail .book-image {
+    border-right: 0px solid #fff !important
+}*/
+
+.product-detail .name {
+    margin-top: 0;
+    margin-bottom: 0
+}
+/*
+.product-detail .name small {
+    display: block
+}*/
+
+.product-detail .name a {
+    margin-left: 0;
+}
+
+.product-detail .price-container {
+    font-size: 24px;
+    margin: 0;
+    font-weight: 300;
+    
+}
+/*
+.product-detail .price-container small {
+    font-size: 12px;
+    
+}*/
+/*
+.product-detail .fa-2x {
+    font-size: 16px!important
+}
+
+.product-detail .fa-2x>h5 {
+    font-size: 12px;
+    margin: 0
+}
+
+.product-detail .fa-2x+a,
+.product-detail .fa-2x+a+a {
+    font-size: 13px
+}*/
+/*
+.product-detail .certified {
+    margin-top: 10px
+}
+
+.product-detail .certified ul {
+    padding-left: 0
+}
+
+.product-detail .certified ul li:not(first-child) {
+    margin-left: -3px
+}
+
+.product-detail .certified ul li {
+    display: inline-block;
+    background-color: #f9f9f9;
+    padding: 13px 19px
+}
+
+.product-detail .certified ul li:first-child {
+    border-right: none
+}
+
+.product-detail .certified ul li a {
+    text-align: left;
+    font-size: 12px;
+    color: #6d7a83;
+    line-height: 16px;
+    text-decoration: none
+}
+
+.product-detail .certified ul li a span {
+    display: block;
+    color: #21c2f8;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center
+}*/
+/*
+.product-detail .message-text {
+    width: calc(100% - 70px)
+}*/
+
+/****************************************************************************
+*****************************************************************************
+*****END UNCHECKED***********************************************************
+*****************************************************************************
+*****************************************************************************/
+
+
+/*Eliminar padding*/
+.no-padding{
+	padding: 0px;
+}
+.btn-padding{/*Padding botones "Add" y "+info"*/
+	padding: 0.2vw 0.4vw;
+}
+.btn-box{/*Contenedor botones "Add" y "+info"*/
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.bottom{/*Colocar abajo (parent-> position: relative;)*/
+	position: absolute;
+	bottom: 0;
+}
+/*Centrar botones book-item*/
+.btn-box > div{
+	text-align: center;
+}
