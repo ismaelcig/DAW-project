@@ -33,6 +33,7 @@
 		<script type="text/javascript" src="js/book-page.js"></script>
 		<!--CSS específico-->
 		<link rel="stylesheet" href="css/book-page.css">
+		<link rel="stylesheet" href="css/book-item.css">
 	</head>
 	<body>
 		<!--Barra navegación-->
@@ -148,10 +149,8 @@
 					<div class="col-md-12 fixed-height">
 						<h3><span id="moreFromAuth">More from the Author</span></h3>
 						<?php
-							foreach(
-								BookFacade::
-									findBy(null, $book->getAuthor(), null, null)
-								as $bookVO)
+							foreach(BookFacade::relatedByAuthor($book)
+										as $bookVO)
 							{//Se crea una caja por cada libro
 								include('common/includes/book-item-sm.html');
 							}

@@ -4,19 +4,22 @@
 ?>
 	
 	
-<div class="col-md-4 col-xs-6 product">
-	<div class="prod-info-main prod-wrap clearfix">
-		<div class="row">
-			<div class="col-md-5 col-xs-5">
-				<div class="product-image"> 
-					<a href="book-page.php?book=<?php echo $bookVO->getId()?>">
-						<img src="img/books/<?php echo $bookVO->getCover()?>" onerror="this.src=\'img/books/default_cover.jpg\'" class="img-responsive">
-						<?php echo BookItem::getSpecial($bookVO)?>
-					</a>
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+	<div class="book-info-main prod-wrap clearfix">
+		<div class="sm">
+			
+			<div class="row">
+				<!--Img-->
+				<div class="col-md-5 col-xs-5">
+					<div class="book-image"> 
+						<a href="book-page.php?book=<?php echo $bookVO->getId()?>">
+							<img src="img/books/<?php echo $bookVO->getCover()?>" onerror="this.src=\'img/books/default_cover.jpg\'" class="img-responsive">
+							<?php echo BookItem::getSpecial($bookVO)?>
+						</a>
+					</div>
 				</div>
-			</div>
-			<div class="col-md-7 col-xs-7">
-				<div>
+				<!--Título, Autor y Género-->
+				<div class="col-md-7 col-xs-7">
 					<div class="product-detail">
 						<h5 class="name">
 							<a href="book-page.php?book=<?php echo $bookVO->getId()?>">
@@ -29,41 +32,45 @@
 								<span><?php echo $bookVO->getGenre()->getName()?></span>
 							</a>
 						</h5>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<!--Botones-->
+				<div class="col-md-6 col-xs-5">
+					<div class="btn-box">
+						<div class="col-md-12"> 
+							<a href="javascript:void(0);" 
+								<?php if($bookVO->getStock()==0) echo 'disabled'?>
+								class="btn add-bucket btn-padding" role="button">
+									<span id="add">Add</span>
+							</a>
+							<a href="book-page.php?book=<?php echo $bookVO->getId()?>" 
+								class="btn btn-info ">
+									<span class="glyphicon glyphicon-heart"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<!--Precio-->
+				<div class="col-md-6 col-xs-7">
+					<div class="product-detail">
 						<div class="product-info smart-form bottom">
-							<div class="row">
-								<div class="col-md-12">
-									<div class="rating">
-										<?php 
-											echo BookItem::getHtmlStars($bookVO->getRating());
-											echo ' '.$bookVO->getRating();?>
-									</div>
-								</div>
-							</div>
 							<div>
 								<p class="price-container">
 									<span>
-										<?php Utilidades::getMoney($bookVO->getPrice())?>
+										<?php echo Utilidades::getMoney($bookVO->getPrice())?>
 									</span>
 								</p>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="btn-box">
-					<div class="col-md-12"> 
-						<a href="javascript:void(0);" 
-							<?php if($bookVO->getStock()==0) echo 'disabled'?>
-							class="btn btn-danger btn-padding" role="button">
-								<span id="addCart">Add to Cart</span>
-						</a>
-						<a href="book-page.php?book=<?php echo $bookVO->getId()?>" 
-							class="btn btn-info btn-padding">
-								<span id="infoL" class="full-text">More info</span>
-								<span id="infoS" class="short-text">+Info</span>
-						</a>
-					</div>
-				</div>
 			</div>
+			
+			
+			
 		</div>
 	</div>
 </div>

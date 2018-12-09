@@ -15,37 +15,62 @@
     overflow: hidden;
     position: relative;
 }
+/*Suprimir márgenes entre la img y los datos*/
+.prod-wrap div[class*=col-md-5] {
+	padding-right: 0
+}
+.prod-wrap div[class*=col-md-7] {
+	padding: 0 13px 0 0
+}
 
 /*Large*/
 @media only screen and (min-width:1200px) {
-	.book-info-main .book-image {
+	.book-info-main .lg .book-image {
 		height: 206px;/*Igualar altura de todos los book-item*/
 		border-right: 1px solid #dfe5e9;
 	}
-	.book-info-main .product-detail {
+	.book-info-main .lg .product-detail {
 		height: 17rem;/*Espacio textos book-item*/
+	}
+	.book-info-main .sm .book-image {
+		height: 140px;/*Igualar tamaño de todos los book-item*/
+		width: 95px;/*
+		border-right: 1px solid #dfe5e9;*/
+	}
+	.book-info-main .sm .product-detail {
+		height: 140px;/*Espacio textos book-item*/
 	}
 }/*Medium*/
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-	.book-info-main .book-image {
+	.book-info-main .lg .book-image {
 		height: 180px;/*Igualar altura de todos los book-item*/
 	}
-	.book-info-main .product-detail {
+	.book-info-main .lg .product-detail {
 		height: 14rem;/*Espacio textos book-item*/
+	}
+	.book-info-main .sm .book-image {
+		height: 120px;/*Igualar tamaño de todos los book-item*/
+		width: 95px;
+	}
+	.book-info-main .sm .product-detail {
+		height: 120px;/*Espacio textos book-item*/
 	}
 }/*Small*/
 @media only screen and (min-width: 766px) and (max-width: 991px) {
-	.book-info-main .book-image {
+	.book-info-main .lg .book-image {
 		height: 200px;/*Igualar altura de todos los book-item*/
 	}
-	.book-info-main .product-detail {
+	.book-info-main .lg .product-detail {
 		height: 15.4rem;/*Espacio textos book-item*/
 	}
+	.book-info-main .sm .book-image {
+		height: 150px;/*Igualar tamaño de todos los book-item*/
+		width: 125px;
+	}
+		
 }
 
-
-
-.book-info-main .product-detail {
+.book-info-main .lg .product-detail {
 	height: 17rem;
     border-bottom: 1px solid #dfe5e9;
     position: relative;
@@ -75,8 +100,10 @@
     line-height: 20px;
     padding: 10px 14px 16px 19px;
     background: #fff
+}*//*
+.sm .row:first-child{
+	border-bottom: 1px solid #dfe5e9;
 }*/
-
 .book-info-main .product-info {
     padding: 5px 15px 5px 15px
 }
@@ -187,7 +214,8 @@
 
 .product-detail .name {
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
+	margin-left: 1px;
 }
 /*
 .product-detail .name small {
@@ -293,3 +321,16 @@
 .btn-box > div{
 	text-align: center;
 }
+
+
+
+
+/****************************************************************************
+*****************************************************************************
+*****book-item-sm************************************************************
+*****************************************************************************
+*****************************************************************************/
+
+
+
+

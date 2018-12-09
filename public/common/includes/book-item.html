@@ -1,9 +1,12 @@
-<?php require_once('book-item.php'); ?>
+<?php
+	require_once('book-item.php');
+	require_once('Utilidades.php');
+?>
 	
 	
 <div class="col-md-4 col-xs-6">
 	<div class="book-info-main prod-wrap clearfix">
-		<div class="row">
+		<div class="row lg">
 			<div class="col-md-5 col-xs-5">
 				<div class="book-image"> 
 					<a href="book-page.php?book=<?php echo $bookVO->getId()?>">

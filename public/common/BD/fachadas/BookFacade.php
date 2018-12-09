@@ -47,6 +47,22 @@ class BookFacade{
 		return $res;
 	}
 	
+	/**
+	 * Recibe un libro y busca otros del mismo autor
+	 */
+	function relatedByAuthor($book){
+		$res = array();
+		
+		foreach(
+			BookAccess::
+				relatedByAuthor($book->getId(), $book->getLang(), $book->getAuthor())
+			as $obj) 
+		{// Añadimos un objeto por cada elemento obtenido
+			$res[] = self::daoToDto($obj);
+		}
+		return $res;
+	}
+	
 	
 	
 	/**

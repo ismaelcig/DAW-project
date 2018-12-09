@@ -78,28 +78,16 @@ body{
 
 
 @media only screen and (min-width:1201px) {
-    .prod-wrap div[class*=col-md-5] {
-        padding-right: 0
-    }
-    .prod-wrap div[class*=col-md-7] {
-        padding: 0 13px 0 0
-    }
 	#searchbar{/*SearchBar más grande en pc*/
 		min-width: 400px;
 	}
-}
+}/*
 @media only screen and (max-width:1200px) {
-    .prod-wrap div[class*=col-xs-5] {
-        padding-right: 0
-    }
-    .prod-wrap div[class*=col-xs-7] {
-        padding: 0 10px 0 0
-    }
 	.product-info .row{
 		height: 30px;
 	}
 }
-
+*/
 
 /*Ocultar texto corto por defecto*/
 .short-text { display: none; }

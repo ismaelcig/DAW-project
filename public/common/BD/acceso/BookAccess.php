@@ -103,6 +103,31 @@ class BookAccess{
 		}
 		return $res;
 	}
+	
+	/**
+	 * Busca libros del mismo autor, pero sin incluir el que se recibe
+	 */
+	function relatedByAuthor($book_id, $book_lang, $author_id){
+		Utilidades::_log("relatedByAuthor($book_id, $book_lang, $author_id)");
+		$query ="SELECT id,author,genre,saga,rating,price,sold, 
+					book_id,lang,isbn,cover,title,synopsis,stock,visible,
+					publisher,publish_date
+				FROM book, book_lang 
+				WHERE id = book_id 
+				  AND (id != $book_id OR lang != '$book_lang') 
+				  AND author = $author_id 
+				  AND visible = 1 
+				  ORDER BY sold DESC
+				  LIMIT 4";
+		Utilidades::_log("query: ".$query);
+		$res = array();
+		
+		foreach(ejecutarConsulta($query) as $row) {
+			// Añadimos un objeto por cada elemento obtenido
+			$res[] = new BookVO($row);
+		}
+		return $res;
+	}
 }
 
 ?>
