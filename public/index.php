@@ -10,9 +10,13 @@
 		 */
 			require_once ('common/includes/heading.html');//Se incluye head
 			require_once ('common/includes/Utilidades.php');
+			Utilidades::_log('Entra ------->index.php<-------');
+
 			//Comenzar session (inicializa variables de sesión)
 			Utilidades::initSession();
+			Utilidades::traza($_SESSION['activeUser']);
 		?>
+		<title>BookWorld</title>
 		<!--CSS de esta página-->
 		<link rel="stylesheet" href="css/master.css">
 		<link rel="stylesheet" href="css/book-item.css">

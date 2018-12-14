@@ -10,7 +10,7 @@
       "genres":		"Géneros",
       "signup": 	" Registrarse",
       "signin": 	" Entrar",
-      "searchbar":	"Buscar libros...",
+      "_searchbar":	"Buscar libros...",
       "addCart":	"Añadir",
       "infoL":		"Más info",
       "infoS":		"+info",
@@ -31,10 +31,44 @@
 	  "publisher":	"Editorial",
 	  "publDate":	"Fecha Publicación",
 	  "moreFromAuth": "Más del mismo Autor",
-	  "moreFromGenre": "Otros/Mismo Género"
+	  "moreFromGenre": "Otros/Mismo Género",
+	  
+	  "_user":		"Usuario",
+	  "_pass":		"Contraseña",
+	  "myAcc":		"Mi Cuenta",
+	  "favList":	"Lista de favoritos",
+	  "orders":		"Pedidos",
+	  "logOut":		"Cerrar sesión",
+	  
+	  "logInfo":	"Info. de inicio de sesión",
+	  "moreInfo":	"Info. adicional",
+	  "reqShip":	"Necesario para realizar envíos",
+	  "_account":	"Un nombre chulo",
+	  "_pass2":		"Repite Contraseña",
+	  "_name":		"Tu nombre real",
+	  "_surnames":	"Apellidos",
+	  "_address":	"Dirección",
+	  "_email":		"algo@gmail.com",
+	  "emailPriv":	"Nunca compartiremos tu email con nadie más.",
+	  "notNow":		"Ahora no",
+	  
+	  "sorryTitle":	"Lo sentimos :(",
+	  "sorrySubtitle":	"Parece que ha habido un error",
+	  "techSupport":"Nuestro mejor empleado está trabajando en ello.",
+	  "back":		"Volver",
+	  "accExists":	"Ya existe una cuenta con ese nombre.",
+	  "logErr":		"Nombre de usuario y/o clave incorrectos.",
+	  "regErr":		"Error al tratar de registrar."
+	  
 	  
     }
   ],
+  
+  
+  
+  
+  
+  
   "EN": [
     {
 	  "EN":			"English",
@@ -46,7 +80,7 @@
       "genres":		"Genres",
       "signup": 	"Sign Up",
       "signin": 	"Sign In",
-      "searchbar":	"Search books...",
+      "_searchbar":	"Search books...",
       "addCart":	"Add to Cart",
       "infoL":		"More info",
       "infoS":		"+info",
@@ -67,7 +101,35 @@
 	  "publisher":	"Publisher",
 	  "publDate":	"Publication Date",
 	  "moreFromAuth": "More from the Author",
-	  "moreFromGenre": "Others/Same Genre"
+	  "moreFromGenre": "Others/Same Genre",
+	  
+	  "_user":		"User",
+	  "_pass":		"Password",
+	  "myAcc":		"My Account",
+	  "favList":	"Favourite List",
+	  "orders":		"Orders",
+	  "logOut":		"Log out",
+	  
+	  "logInfo":	"Login Info",
+	  "moreInfo":	"Additional Info",
+	  "reqShip":	"Required for shipping",
+	  "_account":	"A cool name",
+	  "_pass2":		"Repeat password",
+	  "_name":		"Real name",
+	  "_surnames":	"Surnames",
+	  "_address":	"Address",
+	  "_email":		"something@gmail.com",
+	  "emailPriv":	"We'll never share your email with anyone else.",
+	  "notNow":		"Not now",
+	  
+	  "sorryTitle":	"We are sorry :(",
+	  "sorrySubtitle":	"It seems like there was an error",
+	  "techSupport":"Our best employer is working on it.",
+	  "back":		"Go back",
+	  "accExists":	"An account with that name already exists.",
+	  "logErr":		"Username or password are not correct.",
+	  "regErr":		"Error while trying to register."
+	  
 	  
     }
   ]

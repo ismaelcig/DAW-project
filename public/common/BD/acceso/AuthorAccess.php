@@ -15,7 +15,7 @@ class AuthorAccess{
 		$query = "SELECT id, name FROM author";
 		$res = array();
 		
-		foreach(ejecutarConsulta($query) as $row) {
+		foreach(DB::ejecutarConsulta($query) as $row) {
 			// Añadimos un objeto por cada elemento obtenido
 			$res[] = new AuthorDAO($row);
 		}
@@ -27,7 +27,7 @@ class AuthorAccess{
 	 */ 
 	function findById($id){
 		$query = "SELECT id, name FROM author WHERE id = $id";
-		$row = ejecutarConsulta($query);
+		$row = DB::ejecutarConsulta($query);
 		
 		return new AuthorDAO($row[0]);
 	}

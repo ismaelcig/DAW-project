@@ -1,7 +1,12 @@
 <?php
 
-class UserDAO {
-    protected $id;//id
+/**
+ * Clase preparada para recoger todos los datos de un Usuario. 
+ * Tablas: user.
+ */
+
+class UserDTO {
+	protected $id;//id
 	protected $account;//String
 	protected $name;//String
 	protected $surnames;//String
@@ -35,18 +40,20 @@ class UserDAO {
     public function getAccess() {return $this->access; }
     public function setAccess($access) {$this->access = $access; }
     
-    public function __construct($row = null) {
-		if(null != $row){
-			$this->id = $row['id'];
-			$this->account = $row['account'];
-			$this->name = $row['name'];
-			$this->surnames = $row['surnames'];
-			$this->email = $row['email'];
-			$this->pass = $row['pass'];
-			$this->address = $row['address'];
-			$this->access = $row['access'];
-		}
-    }
-}
-
+    
+    public function init($id, $account, $name, $surnames, $email,
+						$pass,$address,$access) {
+        $this->id 		= $id;
+        $this->account 	= $account;
+        $this->name 	= $name;
+        $this->surnames = $surnames;
+        $this->email 	= $email;
+        $this->pass 	= $pass;
+        $this->address 	= $address;
+        $this->access 	= $access;
+    }   
+	
+    public function __construct() {}   
+}       
+        
 ?>

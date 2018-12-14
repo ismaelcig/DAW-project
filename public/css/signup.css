@@ -1,0 +1,11 @@
+/*Centramos el formulario*/
+body {
+  background-color: beige;
+}
+
+form{
+	margin-top: 3rem;
+	max-width: 600px;
+	background-color: whitesmoke;
+	border: 1px solid #909090;
+}

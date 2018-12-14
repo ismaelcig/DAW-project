@@ -15,7 +15,7 @@ class GenreAccess{
 		$query = "SELECT id, nameEN, nameES FROM genre";
 		$res = array();
 		
-		foreach(ejecutarConsulta($query) as $row) {
+		foreach(DB::ejecutarConsulta($query) as $row) {
 			// Añadimos un objeto por cada elemento obtenido
 			$res[] = new GenreDAO($row);
 		}
@@ -27,7 +27,7 @@ class GenreAccess{
 	 */ 
 	function findById($id){
 		$query = "SELECT id, nameEN, nameES FROM genre WHERE id = $id";
-		$row = ejecutarConsulta($query);
+		$row = DB::ejecutarConsulta($query);
 		
 		return new GenreDAO($row[0]);
 	}

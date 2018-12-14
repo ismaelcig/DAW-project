@@ -15,7 +15,7 @@ class SagaAccess{
 		$query = "SELECT id, nameEN, nameES FROM saga";
 		$res = array();
 		
-		foreach(ejecutarConsulta($query) as $row) {
+		foreach(DB::ejecutarConsulta($query) as $row) {
 			// Añadimos un objeto por cada elemento obtenido
 			$res[] = new SagaDAO($row);
 		}
@@ -27,7 +27,7 @@ class SagaAccess{
 	 */ 
 	function findById($id){
 		$query = "SELECT id, nameEN, nameES FROM saga WHERE id = $id";
-		$row = ejecutarConsulta($query);
+		$row = DB::ejecutarConsulta($query);
 		
 		return new SagaDAO($row[0]);
 	}

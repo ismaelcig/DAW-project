@@ -24,7 +24,7 @@ class BookAccess{
 				  AND lang = $lang";
 		$res = array();
 		
-		foreach(ejecutarConsulta($query) as $row) {
+		foreach(DB::ejecutarConsulta($query) as $row) {
 			// Añadimos un objeto por cada elemento obtenido
 			$res[] = new BookLangDAO($row);
 		}
@@ -45,7 +45,7 @@ class BookAccess{
 		if(null != $lang)
 			$query.=" AND lang = '$lang'";
 		
-		$row = ejecutarConsulta($query);
+		$row = DB::ejecutarConsulta($query);
 		if(null != $row)//Por si no lo encuentra
 			return new BookLangDAO($row[0]);
 		else return null;
@@ -97,7 +97,7 @@ class BookAccess{
 		Utilidades::_log("query: ".$query);
 		$res = array();
 		
-		foreach(ejecutarConsulta($query) as $row) {
+		foreach(DB::ejecutarConsulta($query) as $row) {
 			// Añadimos un objeto por cada elemento obtenido
 			$res[] = new BookVO($row);
 		}

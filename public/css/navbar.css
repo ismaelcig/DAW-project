@@ -48,6 +48,15 @@
 }
 
 
+/*Container desplegable para Login y Cuenta*/
+.desplegable-cuenta{
+	padding: 10px 15px;
+	min-width: 250px;
+}
+
+
+
+
 
 
 /*Botón Volver arriba*/

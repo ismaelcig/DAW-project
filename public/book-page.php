@@ -8,11 +8,13 @@
 		 * @author Ismael Conde Iglesias <ismaelci@outlook.es>
 		 * @version 1.0
 		 */
+
 			require_once ('common/includes/heading.html');//Se incluye head
 			require_once ('common/includes/Utilidades.php');
 			require_once ('common/BD/fachadas/BookFacade.php');
 			require_once ('common/BD/fachadas/AuthorFacade.php');
 			require_once ('common/BD/fachadas/GenreFacade.php');
+			Utilidades::_log('Entra ------->book-page.php<-------');
 			
 			//Comenzar session (inicializa variables de sesión)
 			Utilidades::initSession();
@@ -29,6 +31,8 @@
 			$author = AuthorFacade::findById($book->getAuthor());
 			$genre = GenreFacade::findById($book->getGenre());
 		?>
+		<!--Icono-->
+		<title><?php echo $book->getTitle();?></title>
 		<!--JS específico-->
 		<script type="text/javascript" src="js/book-page.js"></script>
 		<!--CSS específico-->
@@ -130,7 +134,11 @@
 							<div class="col-md-3 col-xs-6">
 								<span id="language" class="bold">Language</span>: 
 								<span id="<?php echo $book->getLang()?>"></span>
-							</div>
+							</div><!--
+							<div class="col-md-3 col-xs-6">
+								<span id="saga" class="bold">Saga</span>: 
+								<span id="<php echo $book->getSaga()->getName()?>"></span>
+							</div>-->
 							<div class="col-md-3 col-xs-6">
 								<span id="publisher" class="bold">Publisher</span>: 
 								<?php echo $book->getPublisher()?>

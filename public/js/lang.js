@@ -37,10 +37,10 @@ function loadStrings(id){
 function loadTexts(data){
 	//Recorremos el array recibido
 	$.each( data, function( key, value) {
-		//Colocamos value en el span correspondiente
-		if(key == 'searchbar'){
-			$("#searchbar").attr("placeholder", value);
-		}else{
+		//Colocamos value en el elemento correspondiente
+		if(key.indexOf('_') != -1){//Si contiene _ es un placeholder
+			$('[name='+key+']').attr("placeholder", value);
+		}else{//Sino, un span
 			$('span[id='+key+']').text(value);
 		}
 	});
