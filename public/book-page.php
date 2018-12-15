@@ -14,6 +14,7 @@
 			require_once ('common/BD/fachadas/BookFacade.php');
 			require_once ('common/BD/fachadas/AuthorFacade.php');
 			require_once ('common/BD/fachadas/GenreFacade.php');
+			require_once ('common/BD/fachadas/SagaFacade.php');
 			Utilidades::_log('Entra ------->book-page.php<-------');
 			
 			//Comenzar session (inicializa variables de sesión)
@@ -30,6 +31,7 @@
 			
 			$author = AuthorFacade::findById($book->getAuthor());
 			$genre = GenreFacade::findById($book->getGenre());
+			$saga = SagaFacade::findById($book->getSaga());
 		?>
 		<!--Icono-->
 		<title><?php echo $book->getTitle();?></title>
@@ -134,11 +136,15 @@
 							<div class="col-md-3 col-xs-6">
 								<span id="language" class="bold">Language</span>: 
 								<span id="<?php echo $book->getLang()?>"></span>
-							</div><!--
+							</div>
 							<div class="col-md-3 col-xs-6">
 								<span id="saga" class="bold">Saga</span>: 
-								<span id="<php echo $book->getSaga()->getName()?>"></span>
-							</div>-->
+								<?php echo $saga->getName()?>
+							</div>
+							<div class="col-md-3 col-xs-6">
+								<span id="sold" class="bold">Sold</span>: 
+								<?php echo $book->getSold()?>
+							</div>
 							<div class="col-md-3 col-xs-6">
 								<span id="publisher" class="bold">Publisher</span>: 
 								<?php echo $book->getPublisher()?>

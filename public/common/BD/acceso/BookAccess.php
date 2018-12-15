@@ -48,6 +48,7 @@ class BookAccess{
 		$row = DB::ejecutarConsulta($query);
 		if(null != $row)//Por si no lo encuentra
 			return new BookLangDAO($row[0]);
+			//return new BookVO($row[0]);
 		else return null;
 	}
 

@@ -23,17 +23,17 @@ class BookFacade{
 	}
 
 	/**
-	 * Recupera un libro por su id
+	 * Recupera un BookVO por su id
 	 */ 
 	public function findById($id){
 		$obj = BookAccess::findById($id);
 		if(null != $obj)
-			return self::daoToDto($obj);
+			return $obj;//self::daoToDto($obj);
 		else return null;
 	}
 	
 	/**
-	 * Devuelve filtrando por parámetros
+	 * Devuelve VO filtrando por parámetros
 	 */
 	function findBy($genre, $author, $minPrice, $maxPrice){
 		$res = array();
@@ -42,7 +42,7 @@ class BookFacade{
 			BookAccess::findBy($genre, $author, $minPrice, $maxPrice)
 			as $obj) 
 		{// Añadimos un objeto por cada elemento obtenido
-			$res[] = self::daoToDto($obj);
+			$res[] = $obj;//self::daoToDto($obj);
 		}
 		return $res;
 	}

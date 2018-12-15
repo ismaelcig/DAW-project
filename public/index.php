@@ -14,7 +14,7 @@
 
 			//Comenzar session (inicializa variables de sesión)
 			Utilidades::initSession();
-			Utilidades::traza($_SESSION['activeUser']);
+			//Utilidades::traza($_SESSION['activeUser']);
 		?>
 		<title>BookWorld</title>
 		<!--CSS de esta página-->
