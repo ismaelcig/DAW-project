@@ -3,6 +3,7 @@
  * en el idioma que corresponda
  */
 
+
 //Al cargar el documento
 $(document).ready(function(){
 	//Cargamos los textos de la página
@@ -14,16 +15,22 @@ $(document).ready(function(){
  * Recupera los textos de un JSON con una llamada AJAX
  * Si recibe un id, carga únicamente ese texto
  * Sino, carga todos los de la página
+ * Si display == true, muestra el texto mediante un alert()
  */
-function loadStrings(id){
+function loadStrings(id, display = false){
 	//Llamada que devuelve el json donde tenemos nuestros datos
 	var jqxhr = $.getJSON( "common/lang.json", function() {
 					//Recuperamos el idioma
 					var lang = $('#lang').text();
-					if(null == id)//Carga todo
-						loadTexts(jqxhr['responseJSON'][lang][0]);
-					else//Carga sólo este
-						loadText(id, jqxhr['responseJSON'][lang][0]);
+					if(!display){
+						if(null == id)//Carga todo
+							loadTexts(jqxhr['responseJSON'][lang][0]);
+						else//Carga sólo este
+							loadText(id, jqxhr['responseJSON'][lang][0]);
+					}
+					else{//Devolvemos el valor solicitado
+						alert(jqxhr['responseJSON'][lang][0][id]);
+					}
 				})
 				.fail(function() {
 					//Indicamos que se ha producido un error
@@ -51,4 +58,11 @@ function loadTexts(data){
  */
 function loadText(id, data){
 	$('span[id='+id+']').text(data[id]);
+}
+
+/**
+ * Muestra un texto mediante alert
+ */
+function alertText(id){
+	loadStrings(id,true);
 }

@@ -15,6 +15,7 @@
 			require_once ('common/BD/fachadas/AuthorFacade.php');
 			require_once ('common/BD/fachadas/GenreFacade.php');
 			require_once ('common/BD/fachadas/SagaFacade.php');
+			require_once ('common/BD/fachadas/UserFacade.php');
 			Utilidades::_log('Entra ------->book-page.php<-------');
 			
 			//Comenzar session (inicializa variables de sesión)
@@ -98,12 +99,33 @@
 						
 						<!--Botones-->
 						<div class="btn-box">
+							<!--Esto se añade para facilitar el manejo de favoritos desde jquery-->
+							<input id="user_id" type="hidden" value="<?php echo $user->getId()?>">
+							<input id="book_id" type="hidden" value="<?php echo $book->getId()?>">
+							<input id="book_lang" type="hidden" value="<?php echo $book->getLang()?>">
+							
+							<!--Añadir a cesta-->
 							<a class="btn add-bucket" <?php if($book->getStock()==0) echo 'disabled'?>
 								href="#" role="button">
 									<span id="addBucket">Add to bucket</span>
 							</a>
-							<a class="add-wish" href="#">
+							<?php
+								$fav = false;//Si está en favoritos
+								if($logged){//La variable está en navbars
+									$fav = UserFacade::isFavourite(
+														$book->getId(),
+														$book->getLang());
+								}
+							?>
+							<!--Añadir a favoritos-->
+							<a class="btn add-wish <?php if($fav) echo 'hidden';?>"
+								href="#" role="button">
 								<span id="addWish">Add to wishlist</span>
+							</a>
+							<!--Eliminar de favoritos-->
+							<a class="btn rem-wish <?php if(!$fav) echo 'hidden';?>"
+								href="#" role="button">
+								<span id="remWish">Remove from wishlist</span>
 							</a>
 						</div>
 						

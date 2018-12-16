@@ -66,5 +66,42 @@ class UserFacade{
 							
 		return $dto;
 	}
+	
+	
+	
+	
+	
+	/********************************************
+	 * Métodos para gestionar favoritos
+	 ********************************************/
+	
+	/**
+	 * Comprueba si ya está como favorito
+	 */
+	public function isFavourite($book_id,$book_lang){
+		return UserAccess::isFavourite($book_id, $book_lang);
+	}
+	
+	/**
+	 * Añade un favorito de un usuario
+	 */
+	public function addFavourite($book_id, $book_lang){
+		UserAccess::addFavourite($book_id, $book_lang);
+	}
+	 
+	/**
+	 * Elimina un favorito de un usuario
+	 */
+	public function removeFavourite($book_id, $book_lang){
+		UserAccess::removeFavourite($book_id, $book_lang);
+	}
+	
+	/**
+	 * Recupera todos los favoritos del usuario
+	 */
+	public function getFavoritos(){
+		return UserAccess::getFavoritos();
+		
+	}
 }
 ?>

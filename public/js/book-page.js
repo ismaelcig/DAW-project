@@ -42,6 +42,10 @@ $(document).ready(function() {
 		$('.more-less').hide();//Ocultamos el "Leer más..."
 	}
 	
+	
+	
+	
+	
 	/*Evento al redimensionar la ventana*/
 	var resizeTimer;
 	$(window).on('resize', function(){
@@ -65,6 +69,65 @@ $(document).ready(function() {
 			
 		}, 150);
 		
+	});
+	
+	
+	
+	
+	
+	/*Añadir a favoritos*/
+	$('.add-wish').click(function() {
+		console.log('add-wish');
+		//Recuperamos las variables
+		var bookId = $('#book_id').val();
+		var bookLang = $('#book_lang').val();
+		
+		//Hacemos cositas
+		$.ajax({
+			type: "POST",
+			url: "common/includes/book-functions.php",
+			data: {
+				action: 'add-wish',
+				book_id: bookId,
+				book_lang: bookLang
+			}
+		}).done(function( msg ) {
+			console.log('done');
+			if('' != msg){
+				alertText(msg);
+				if('faved'){//Si lo ha añadido
+					$('.add-wish').addClass('hidden');//Ocultamos "añadir"
+					$('.rem-wish').removeClass('hidden');// Mostramos "eliminar"
+				}
+			}
+		});
+	});
+	/*Eliminar de favoritos*/
+	$('.rem-wish').click(function() {
+		console.log('rem-wish');
+		//Recuperamos las variables
+		var bookId = $('#book_id').val();
+		var bookLang = $('#book_lang').val();
+		
+		//Hacemos cositas
+		$.ajax({
+			type: "POST",
+			url: "common/includes/book-functions.php",
+			data: {
+				action: 'rem-wish',
+				book_id: bookId,
+				book_lang: bookLang
+			}
+		}).done(function( msg ) {
+			console.log('done');
+			if('' != msg){
+				alertText(msg);
+				if('unfaved'){//Si lo ha eliminadp
+					$('.rem-wish').addClass('hidden');//Ocultamos "eliminar"
+					$('.add-wish').removeClass('hidden');// Mostramos "añadir"
+				}
+			}
+		});
 	});
   
 });

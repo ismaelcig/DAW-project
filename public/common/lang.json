@@ -25,7 +25,8 @@
 	  "noStock":	"Agotado",
 	  "freeShip":	"Envío Gratis",
 	  "addBucket":	"Añadir a la cesta",
-	  "addWish":	"Añadir a deseados",
+	  "addWish":	"Añadir a favoritos",
+	  "remWish":	"Eliminar de favoritos",
 	  "details":	"Detalles del libro",
 	  "isbn":		"ISBN",
 	  "saga":		"Saga",
@@ -60,7 +61,11 @@
 	  "back":		"Volver",
 	  "accExists":	"Ya existe una cuenta con ese nombre.",
 	  "logErr":		"Nombre de usuario y/o clave incorrectos.",
-	  "regErr":		"Error al tratar de registrar."
+	  "regErr":		"Error al tratar de registrar.",
+	  
+	  "mustLog":	"Debes iniciar sesión para hacer esto.",
+	  "faved":		"Libro añadido a favoritos.",
+	  "unfaved":	"Libro eliminado de favoritos."
 	  
 	  
     }
@@ -98,6 +103,7 @@
 	  "freeShip":	"Free Shipment",
 	  "addBucket":	"Add to bucket",
 	  "addWish":	"Add to wishlist",
+	  "remWish":	"Remove from wishlist",
 	  "details":	"Book details",
 	  "isbn":		"ISBN",
 	  "saga":		"Saga",
@@ -132,7 +138,11 @@
 	  "back":		"Go back",
 	  "accExists":	"An account with that name already exists.",
 	  "logErr":		"Username or password are not correct.",
-	  "regErr":		"Error while trying to register."
+	  "regErr":		"Error while trying to register.",
+	  
+	  "mustLog":	"Please, log in to do this.",
+	  "faved":		"Book added to your wishlist.",
+	  "unfaved":	"Book removed from your wishlist."
 	  
 	  
     }
