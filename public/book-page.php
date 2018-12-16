@@ -8,11 +8,15 @@
 		 * @author Ismael Conde Iglesias <ismaelci@outlook.es>
 		 * @version 1.0
 		 */
+
 			require_once ('common/includes/heading.html');//Se incluye head
 			require_once ('common/includes/Utilidades.php');
 			require_once ('common/BD/fachadas/BookFacade.php');
 			require_once ('common/BD/fachadas/AuthorFacade.php');
 			require_once ('common/BD/fachadas/GenreFacade.php');
+			require_once ('common/BD/fachadas/SagaFacade.php');
+			require_once ('common/BD/fachadas/UserFacade.php');
+			Utilidades::_log('Entra ------->book-page.php<-------');
 			
 			//Comenzar session (inicializa variables de sesión)
 			Utilidades::initSession();
@@ -28,7 +32,10 @@
 			
 			$author = AuthorFacade::findById($book->getAuthor());
 			$genre = GenreFacade::findById($book->getGenre());
+			$saga = SagaFacade::findById($book->getSaga());
 		?>
+		<!--Icono-->
+		<title><?php echo $book->getTitle();?></title>
 		<!--JS específico-->
 		<script type="text/javascript" src="js/book-page.js"></script>
 		<!--CSS específico-->
@@ -92,12 +99,33 @@
 						
 						<!--Botones-->
 						<div class="btn-box">
+							<!--Esto se añade para facilitar el manejo de favoritos desde jquery-->
+							<input id="user_id" type="hidden" value="<?php echo $user->getId()?>">
+							<input id="book_id" type="hidden" value="<?php echo $book->getId()?>">
+							<input id="book_lang" type="hidden" value="<?php echo $book->getLang()?>">
+							
+							<!--Añadir a cesta-->
 							<a class="btn add-bucket" <?php if($book->getStock()==0) echo 'disabled'?>
 								href="#" role="button">
 									<span id="addBucket">Add to bucket</span>
 							</a>
-							<a class="add-wish" href="#">
+							<?php
+								$fav = false;//Si está en favoritos
+								if($logged){//La variable está en navbars
+									$fav = UserFacade::isFavourite(
+														$book->getId(),
+														$book->getLang());
+								}
+							?>
+							<!--Añadir a favoritos-->
+							<a class="btn add-wish <?php if($fav) echo 'hidden';?>"
+								href="#" role="button">
 								<span id="addWish">Add to wishlist</span>
+							</a>
+							<!--Eliminar de favoritos-->
+							<a class="btn rem-wish <?php if(!$fav) echo 'hidden';?>"
+								href="#" role="button">
+								<span id="remWish">Remove from wishlist</span>
 							</a>
 						</div>
 						
@@ -130,6 +158,14 @@
 							<div class="col-md-3 col-xs-6">
 								<span id="language" class="bold">Language</span>: 
 								<span id="<?php echo $book->getLang()?>"></span>
+							</div>
+							<div class="col-md-3 col-xs-6">
+								<span id="saga" class="bold">Saga</span>: 
+								<?php echo $saga->getName()?>
+							</div>
+							<div class="col-md-3 col-xs-6">
+								<span id="sold" class="bold">Sold</span>: 
+								<?php echo $book->getSold()?>
 							</div>
 							<div class="col-md-3 col-xs-6">
 								<span id="publisher" class="bold">Publisher</span>: 

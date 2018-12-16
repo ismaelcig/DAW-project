@@ -10,9 +10,13 @@
 		 */
 			require_once ('common/includes/heading.html');//Se incluye head
 			require_once ('common/includes/Utilidades.php');
+			Utilidades::_log('Entra ------->index.php<-------');
+
 			//Comenzar session (inicializa variables de sesión)
 			Utilidades::initSession();
+			
 		?>
+		<title>BookWorld</title>
 		<!--CSS de esta página-->
 		<link rel="stylesheet" href="css/master.css">
 		<link rel="stylesheet" href="css/book-item.css">
@@ -26,17 +30,28 @@
 				<?php
 					/***Cargar libros***/
 					require_once ('common/BD/fachadas/BookFacade.php');
+					require_once ('common/BD/fachadas/UserFacade.php');
 					require_once ('common/BD/objetos/VO/BookVO.php');
-					//Variables por las que filtrar
-					$genre   = Utilidades::get('genre');
-					$author  = Utilidades::get('author');
-					$minPrice= Utilidades::get('min');
-					$maxPrice= Utilidades::get('max');
 					
-					foreach(
-						BookFacade::
-							findBy($genre, $author, $minPrice, $maxPrice)
-						as $bookVO)
+					$list = null;//Libros a cargar
+					
+					//Si hay que cargar la lista de favoritos
+					if(isset($_GET['favList'])){
+						Utilidades::requiredObj($_SESSION['activeUser']);
+						$user_id = $user->getId();
+						$list = UserFacade::getFavoritos();
+						
+					}else{//Variables por las que se filtra
+						$genre   = Utilidades::get('genre');
+						$author  = Utilidades::get('author');
+						$minPrice= Utilidades::get('min');
+						$maxPrice= Utilidades::get('max');
+						
+						$list = BookFacade::findBy($genre, $author, $minPrice, $maxPrice);
+					}
+					
+					//Cargamos la lista
+					foreach($list as $bookVO)
 					{//Se crea una caja por cada libro
 						include('common/includes/book-item.html');
 					}

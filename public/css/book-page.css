@@ -88,10 +88,11 @@ body{
 	border-top: 1px solid cornflowerblue;
     padding-top: 1.5rem;
     margin-top: 1.5rem;
-	margin-right: 15px;
     text-align: center;
 	position: absolute;
 	bottom: 0;
+	left: 15px;
+	right: 15px;
 }
 .pay-box .btn-box a{/*Botones*/
 	margin-bottom: 1rem;
@@ -122,6 +123,9 @@ body{
 }
 .add-wish:hover{
 	background: #90bce1;;
+}
+.rem-wish{/*Eliminar de la lista de desados*/
+	background: #92c7f3;
 }
 
 /******Detalles del libro******/
