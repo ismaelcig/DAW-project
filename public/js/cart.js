@@ -64,10 +64,12 @@ $(document).ready(function() {
 			}).done(function(data) {
 				console.log('done');
 				if('' != data.msg){
-					alertText(data.msg);/*
-					if('thx' == data.msg){//Si lo ha añadido
-						
-					}*/
+					//Esperamos a que acepte
+					$.when( $.ajax(alertText(data.msg))).then(function(){
+						if('thx' == data.msg){//Si lo ha añadido
+							location.reload(false);//Se recarga la página
+						}
+					});
 				}
 			});
 		}
