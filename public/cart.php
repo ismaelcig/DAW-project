@@ -73,11 +73,11 @@
 							<i class="fa fa-angle-left"></i> <span id="contShop">Continue Shopping</span>
 						</a>
 						<!--Botón Checkout-->
-						<a href="#" id="checkout-btn"
-							class="col-sm-5 col-sm-offset-2 col-xs-6 btn btn-success 
-							<?php if($isEmpty) echo 'disabled';?>">
+						<button href="#" id="checkout-btn"
+							class="col-sm-5 col-sm-offset-2 col-xs-6 btn btn-success"
+							<?php if($isEmpty) echo 'disabled';?>>
 							<span id="checkout">Checkout</span> <i class="fa fa-angle-right"></i>
-						</a>
+						</button>
 					</div>
 				</div>
 				

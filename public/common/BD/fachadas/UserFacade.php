@@ -126,6 +126,12 @@ class UserFacade{
 		}
 	}
 	
+	/**
+	 * Realiza el pedido
+	 */
+	public function saveCart(){
+		UserAccess::insertOrder($_SESSION['cart']);
+	}
 	
 	
 	

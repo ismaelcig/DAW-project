@@ -70,6 +70,7 @@
 	  "removed":	"Libro eliminado de la cesta.",
 	  "faved":		"Libro añadido a favoritos.",
 	  "unfaved":	"Libro eliminado de favoritos.",
+	  "thx":		"Muchas gracias, Tenemos tu pedido.",
 	  
 	  "book":		"Libro",
 	  "price":		"Precio",
@@ -160,6 +161,7 @@
 	  "removed":	"Book removed from your cart.",
 	  "faved":		"Book added to your wishlist.",
 	  "unfaved":	"Book removed from your wishlist.",
+	  "thx":		"Thank you, we've got your order.",
 	  
 	  "book":		"Book",
 	  "price":		"Price",

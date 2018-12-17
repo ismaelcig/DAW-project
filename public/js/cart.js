@@ -59,27 +59,20 @@ $(document).ready(function() {
 				url: "common/includes/book-functions.php",
 				dataType: 'json',
 				data: {
-					action: 'rem-bucket',
-					book_id: bookId,
-					book_lang: bookLang,
-					book_price: bookPrice
+					action: 'checkout'
 				}
 			}).done(function(data) {
 				console.log('done');
 				if('' != data.msg){
-					alertText(data.msg);
-					if('removed'){//Si lo ha añadido
-						$('.rem-bucket').addClass('hidden');//Ocultamos "eliminar"
-						$('.add-bucket').removeClass('hidden');// Mostramos "añadir"
-						//Actualizamos el nº de elementos
-						$('#cartAmount').text(data.newAmount);
-					}
+					alertText(data.msg);/*
+					if('thx' == data.msg){//Si lo ha añadido
+						
+					}*/
 				}
 			});
 		}
 		
 	});
-	
 	
 });
 

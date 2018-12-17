@@ -2,7 +2,7 @@ $(document).ready(function(){
 	
 	
 	//Por cada elemento
-	$('.btn-box').val(function(){
+	$('.btn-box').each(function(){
 		//Referencia a los botones
 		var btnAdd = $(this).find('.add-bucket');
 		var btnRem = $(this).find('.rem-bucket');
@@ -12,9 +12,10 @@ $(document).ready(function(){
 		var bookLang = $(this).find('#book_lang').val();
 		var bookPrice = $(this).find('#book_price').val();
 		
+		
 		/*Añadir al carro*/
 		btnAdd.click(function() {
-			if(!$(this).prop('disabled')){//Si no está deshabilitado
+			
 			console.log('add-bucket');
 			
 				//Se añade
@@ -40,12 +41,11 @@ $(document).ready(function(){
 						}
 					}
 				});
-			}
+			
 		});
 		
 		/*Eliminar del carro*/
 		btnRem.click(function() {
-			if(!$(this).prop('disabled')){//Si no está deshabilitado
 			console.log('rem-bucket');
 			
 				//Se elimina
@@ -70,7 +70,6 @@ $(document).ready(function(){
 						}
 					}
 				});
-			}
 		});
 	});
 	

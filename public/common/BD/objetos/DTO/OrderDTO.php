@@ -8,7 +8,9 @@
 class OrderDTO {
 	protected $id;//id
 	protected $user_id;//id
-	protected $time;//Datetime
+	protected $timeP;//Datetime
+	protected $timeS;//Datetime
+	protected $timeC;//Datetime
 	protected $total;//Decimal
 	protected $state;//String
 	protected $bookVOs;//Lista de BookVO
@@ -20,8 +22,14 @@ class OrderDTO {
     public function getUser_id() {return $this->user_id; }
     public function setUser_id($user_id) {$this->user_id = $user_id; }
 	
-    public function getTime() {return $this->time; }
-    public function setTime($time) {$this->time = $time; }
+    public function getTimeP() {return $this->timeP; }
+    public function setTimeP($timeP) {$this->timeP = $timeP; }
+	
+    public function getTimeS() {return $this->timeS; }
+    public function setTimeS($timeS) {$this->timeS = $timeS; }
+	
+    public function getTimeC() {return $this->timeC; }
+    public function setTimeC($timeC) {$this->timeC = $timeC; }
 	
     public function getTotal() {return $this->total; }
     public function setTotal($total) {$this->total = $total; }
@@ -35,10 +43,12 @@ class OrderDTO {
     public function setBookVOs($bookVOs) {$this->bookVOs = $bookVOs; }
     
     
-    public function init($id, $user_id, $time, $total, $state, $bookVOs) {
+    public function init($id, $user_id, $timeP, $timeS, $timeC, $total, $state, $bookVOs) {
         $this->id 		= $id;
         $this->user_id 	= $user_id;
-        $this->time 	= $time;
+        $this->timeP 	= $timeP;
+        $this->timeS 	= $timeS;
+        $this->timeC 	= $timeC;
         $this->total 	= $total;
         $this->state 	= $state;
 		$this->bookVOs	= $bookVOs;

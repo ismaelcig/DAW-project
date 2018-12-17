@@ -2,6 +2,7 @@
 require_once(__DIR__.'/../DB.php');
 require_once(__DIR__.'/../objetos/DAO/UserDAO.php');
 require_once(__DIR__.'/../../includes/Utilidades.php');
+require_once(__DIR__.'/../fachadas/BookFacade.php');
 
 
 /*********************************************************
@@ -120,6 +121,56 @@ class UserAccess{
 			$usado=True;
 		}	
 		return $usado;
+	}
+	
+	
+	
+	
+	
+	/********************************************
+	 * 
+	 ********************************************/
+	 
+	/**
+	 * Inserta el pedido en BD
+	 */
+	public function insertOrder($cart){
+		$user_id = $cart->getUser_id();
+		Utilidades::_log("Pedido de user:$user_id de ".$cart->getTotal().'€');
+		
+		/****Insertar en orders****/
+		$query1 = 'INSERT INTO orders (user_id,timeP,total,state)
+					VALUES (:user_id,:timeP,:total,:state)';
+		$db=DB::conectar();//Devuelve conexión
+		$insert=$db->prepare($query1);
+		//Bind values
+		$insert->bindValue('user_id',$user_id);
+		$insert->bindValue('timeP',date('Y-m-d G:i:s'));//Fecha/Hora Actual
+		$insert->bindValue('total',$cart->getTotal());
+		$insert->bindValue('state','P');//Pendiente
+		
+		$insert->execute();
+		
+		/****Insertar en order_books****/
+		//Recuperamos el id del pedido
+		$order_id = $db->lastInsertId();
+		Utilidades::_log('Id.Pedido: '.$order_id);
+		$query2 = 'INSERT INTO order_books (order_id,book_id,book_lang,book_price)
+					VALUES (:order_id,:book_id,:book_lang,:book_price)';
+		$insert=$db->prepare($query2);
+		foreach($cart->getBookVOs() as $book){
+			//Bind values
+			$insert->bindValue('order_id',$order_id);
+			$insert->bindValue('book_id',$book->getId());//Id libro
+			$insert->bindValue('book_lang',$book->getLang());//Idioma libro
+			$insert->bindValue('book_price',$book->getPrice());//Precio del libro ahora
+			
+			$insert->execute();
+			//Procesamos venta del libro
+			BookFacade::sellBook($book);
+		}
+		
+		Utilidades::_log("Pedido registrado.");
 	}
 	
 	

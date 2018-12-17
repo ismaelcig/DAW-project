@@ -24,6 +24,7 @@ $action = $_POST['action'];
 Utilidades::traza($action);
 
 switch ($action) {
+	/***Carro***/
     case 'add-bucket':
 		UserFacade::addCart($_POST['book_id'], $_POST['book_lang'], $_POST['book_price']);
 		//Devolvemos los datos
@@ -36,6 +37,20 @@ switch ($action) {
 		echo json_encode(array("msg" => 'removed',//Mensaje para mostrar al usuario
 								"newAmount" => sizeOf($_SESSION['cart']->getBookVOs())));//Cantidad carro
 		break;
+	case 'checkout':
+		UserFacade::saveCart();//Se guarda el pedido
+		
+		/*Aquí se realizaría el cobro del pedido*/
+		
+		unset($_SESSION['cart']);
+		$_SESSION['cart'] = new OrderDTO();//Se limpia el carro
+		$_SESSION['cart']->setUser_Id($_SESSION['activeUser']->getId());//Informar user_id
+		
+		//Datos a devolver
+		echo json_encode(array("msg" => 'thx'));
+		break;
+	
+	/***Favoritos***/
     case 'add-wish':
 		UserFacade::addFavourite($_POST['book_id'], $_POST['book_lang']);
 		//Devolvemos los datos

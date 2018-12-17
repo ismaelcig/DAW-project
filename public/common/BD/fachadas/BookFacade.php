@@ -57,6 +57,13 @@ class BookFacade{
 		return $res;
 	}
 	
+	/**
+	 * 
+	 */
+	public function sellBook($book){
+		BookAccess::sellBook($book->getId(), $book->getLang());
+	}
+	
 	
 	
 	/**

@@ -41,7 +41,7 @@ body{
 }
 
 /*Precio*/
-.cart-item-price span{
+.cart-item-price div{
 	font-size: 2rem;
 	color: #21c2f8;
 	margin-top: 15px;

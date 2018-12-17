@@ -104,6 +104,38 @@ class BookAccess{
 		}
 		return $res;
 	}
+	
+	/**
+	 * Realiza venta de un libro
+	 */
+	function sellBook($book_id, $book_lang){
+		Utilidades::_log("sellBook($book_id, $book_lang)");
+		/****Actualizar book****/
+		$query1 ="UPDATE book
+				 SET sold = sold+1
+				 WHERE id = :book_id";
+					
+		$db=DB::conectar();//Devuelve conexión
+		$update=$db->prepare($query1);
+		//Bind values
+		$update->bindValue('book_id',$book_id);
+		
+		$update->execute();
+		Utilidades::_log('Sold+1');
+		/****Actualizar book_lang****/
+		$query2 ="UPDATE book_lang
+				 SET stock = stock-1
+				 WHERE book_id = :book_id
+				   AND lang = :book_lang";
+		
+		$update=$db->prepare($query2);
+		//Bind values
+		$update->bindValue('book_id',$book_id);
+		$update->bindValue('book_lang',$book_lang);
+		
+		$update->execute();
+		Utilidades::_log('Stock-1');
+	}
 }
 
 ?>

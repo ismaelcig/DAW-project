@@ -61,14 +61,14 @@
 							}
 						?>
 						<!--Añadir a cesta-->
-						<a class="btn add-bucket btn-padding <?php if($inCart) echo 'hidden';?>"
+						<button class="btn add-bucket btn-padding <?php if($inCart) echo 'hidden';?>"
 							<?php if($bookVO->getStock()==0) echo 'disabled'?> href="#" role="button">
 								<span id="addCart">Add to Cart</span>
-						</a>
-						<a class="btn rem-bucket btn-padding <?php if(!$inCart) echo 'hidden';?>"
+						</button>
+						<button class="btn rem-bucket btn-padding <?php if(!$inCart) echo 'hidden';?>"
 							<?php if($bookVO->getStock()==0) echo 'disabled'?> href="#" role="button">
 								<span id="remove">Remove</span>
-						</a>
+						</button>
 						<a href="book-page.php?book=<?php echo $bookVO->getId()?>" 
 							class="btn btn-info btn-padding">
 								<span id="infoL" class="full-text">More info</span>
