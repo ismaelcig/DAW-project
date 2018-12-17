@@ -1,0 +1,58 @@
+<!--Recibimos el libro en $bookVO-->
+<div class="col-md-12 col-xs-12 cart-item">
+	<div class="row">
+		<!--Col Book-->
+		<div class="col-md-9 col-xs-9 cart-book">
+			<div class="row">
+				<!--Portada-->
+				<div class="col-md-3 col-xs-5 book-image"> 
+					<a href="book-page.php?book=<?php echo $bookVO->getId()?>">
+						<img src="img/books/<?php echo $bookVO->getCover()?>" 
+							onerror="this.src=\'img/books/default_cover.jpg\'" 
+							class="img-responsive">
+						<!-- <php echo BookItem::getSpecial($bookVO)?> -->
+					</a>
+				</div>
+				<!--Título/Autor-->
+				<div class="col-md-9 col-xs-7">
+					<h4 class="row name">
+						<a href="book-page.php?book=<?php echo $bookVO->getId()?>">
+							<?php echo $bookVO->getTitle()?>
+						</a>
+						<a href="index.php?author=<?php echo $bookVO->getAuthor()->getId()?>">
+							<span><?php echo $bookVO->getAuthor()->getName()?></span>
+						</a>
+					</h4>
+					<p class="synopsis">
+						<span class="full-text hidden">
+							<?php echo $bookVO->getSynopsis();?>
+						</span>
+						<span class="short-text"></span>
+					</p>
+				</div>
+			</div>
+		</div>
+		
+		<!--Col Price-->
+		<div class="col-md-2 col-xs-2 cart-item-price">
+			<div class="row">
+				<span class="col-md-12">
+					<?php echo Utilidades::getMoney($bookVO->getPrice())?>
+				</span>
+			</div>
+		</div>
+		
+		<!--Col Botones-->
+		<div class="col-md-1 col-xs-1 cart-item-buttons">
+			<div class="row">
+				<a class="btn btn-danger btn-sm rem-bucket" href="#" role="button">
+					<i class="fa fa-trash-o"></i>
+					<!--Esto se añade para facilitar las operaciones desde jquery-->
+					<!-- <input id="user_id" type="hidden" value="<php echo $user->getId()?>"> -->
+					<input id="book_id" type="hidden" value="<?php echo $bookVO->getId()?>">
+					<input id="book_lang" type="hidden" value="<?php echo $bookVO->getLang()?>">
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

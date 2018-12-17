@@ -3,6 +3,7 @@ require_once('common/includes/Utilidades.php');
 Utilidades::_log('Entra ------->login.php<-------');
 
 require_once(Utilidades::getRoot().'common/BD/objetos/DTO/UserDTO.php');
+require_once(Utilidades::getRoot().'common/BD/objetos/DTO/OrderDTO.php');
 require_once(Utilidades::getRoot().'common/BD/fachadas/UserFacade.php');
 
 //Inicio de sesión
@@ -31,6 +32,7 @@ if (isset($_POST['signup'])) {
 		$user = UserFacade::insert($user, true);
 		if (null != $user && null != $user->getId()) {
 			$_SESSION['activeUser'] = $user;//Crea la sesión de usuario
+			$_SESSION['cart'] = new OrderDTO();//Crea el carro para añadir libros
 			Utilidades::_log('Registro con éxito.');
 			Utilidades::traza($user);
 			header('Location: index.php');
@@ -43,6 +45,8 @@ if (isset($_POST['signup'])) {
 		header('Location: error.php?msg=accExists');
 	}		
 	
+	
+	
 }elseif (isset($_POST['login'])) {//Verifica si la variable signin está definida
 	Utilidades::_log('Login: '.$_POST['_user']);
 	$user = UserFacade::findUser($_POST['_user'],$_POST['_pass']);
@@ -50,12 +54,19 @@ if (isset($_POST['signup'])) {
 	// Comprobamos que lo ha encontrado
 	if (null != $user->getId()) {
 		$_SESSION['activeUser'] = $user;//Crea la sesión de usuario
+		$_SESSION['cart'] = new OrderDTO();//Crea el carro para añadir libros
+		$_SESSION['cart']->setUser_Id($user->getId());//Informamos el user_id
+		Utilidades::traza($_SESSION['cart']);
 		Utilidades::_log('Login con éxito.');
 	Utilidades::traza($_SESSION['activeUser']);
 		header('Location: index.php');
 	}else{
 		header('Location: error.php?msg=logErr');
 	}
+	
+	
+	
+	
 }elseif(isset($_POST['exit'])){//Cerrar sesión
 	Utilidades::_log('Cerrar Sesión.');
 	header('Location: index.php');

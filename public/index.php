@@ -10,6 +10,10 @@
 		 */
 			require_once ('common/includes/heading.html');//Se incluye head
 			require_once ('common/includes/Utilidades.php');
+			require_once ('common/BD/fachadas/BookFacade.php');
+			require_once ('common/BD/fachadas/UserFacade.php');
+			require_once ('common/BD/objetos/VO/BookVO.php');
+			require_once ('common/BD/objetos/DTO/OrderDTO.php');
 			Utilidades::_log('Entra ------->index.php<-------');
 
 			//Comenzar session (inicializa variables de sesión)
@@ -20,6 +24,8 @@
 		<!--CSS de esta página-->
 		<link rel="stylesheet" href="css/master.css">
 		<link rel="stylesheet" href="css/book-item.css">
+		<!--JS específico-->
+		<script type="text/javascript" src="js/index.js"></script>
 	</head>
 	<body>
 		<!--Barra navegación-->
@@ -29,15 +35,11 @@
 			<div id="book-items" class="container">
 				<?php
 					/***Cargar libros***/
-					require_once ('common/BD/fachadas/BookFacade.php');
-					require_once ('common/BD/fachadas/UserFacade.php');
-					require_once ('common/BD/objetos/VO/BookVO.php');
 					
 					$list = null;//Libros a cargar
 					
 					//Si hay que cargar la lista de favoritos
-					if(isset($_GET['favList'])){
-						Utilidades::requiredObj($_SESSION['activeUser']);
+					if(isset($_GET['favList']) && isset($_SESSION['activeUser'])){
 						$user_id = $user->getId();
 						$list = UserFacade::getFavoritos();
 						

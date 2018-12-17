@@ -75,6 +75,79 @@ $(document).ready(function() {
 	
 	
 	
+	/*Añadir a cesta*/
+	//Comprobamos que no esté deshabilitado
+	if(!$('.add-bucket').prop('disabled')){
+		$('.add-bucket').click(function() {
+			console.log('add-bucket');
+			//Recuperamos las variables
+			var bookId = $('#book_id').val();
+			var bookLang = $('#book_lang').val();
+			var bookPrice = $('#book_price').val();
+			
+			//Lo añadimos
+			$.ajax({
+				type: "POST",
+				url: "common/includes/book-functions.php",
+				dataType: 'json',
+				data: {
+					action: 'add-bucket',
+					book_id: bookId,
+					book_lang: bookLang,
+					book_price: bookPrice
+				}
+			}).done(function(data) {
+				console.log('done');
+				if('' != data.msg){
+					console.log(data);
+					alertText(data.msg);
+					if('added'){//Si lo ha añadido
+						$('.add-bucket').addClass('hidden');//Ocultamos "añadir"
+						$('.rem-bucket').removeClass('hidden');// Mostramos "eliminar"
+						//Actualizamos el nº de elementos
+						$('#cartAmount').text(data.newAmount);
+					}
+				}
+			});
+		});
+	}
+	/*Eliminar de la cesta*/
+	//Comprobamos que no esté deshabilitado
+	if(!$('.rem-bucket').prop('disabled')){
+		$('.rem-bucket').click(function() {
+			console.log('rem-bucket');
+			//Recuperamos las variables
+			var bookId = $('#book_id').val();
+			var bookLang = $('#book_lang').val();
+			
+			//Hacemos cositas
+			$.ajax({
+				type: "POST",
+				url: "common/includes/book-functions.php",
+				dataType: 'json',
+				data: {
+					action: 'rem-bucket',
+					book_id: bookId,
+					book_lang: bookLang
+				}
+			}).done(function(data) {
+				console.log('done');
+				if('' != data.msg){
+					alertText(data.msg);
+					if('removed'){//Si lo ha eliminado
+						$('.rem-bucket').addClass('hidden');//Ocultamos "eliminar"
+						$('.add-bucket').removeClass('hidden');// Mostramos "añadir"
+						//Actualizamos el nº de elementos
+						$('#cartAmount').text(data.newAmount);
+					}
+				}
+			});
+		});
+	}
+	
+	
+	
+	
 	/*Añadir a favoritos*/
 	$('.add-wish').click(function() {
 		console.log('add-wish');

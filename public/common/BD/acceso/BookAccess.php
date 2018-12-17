@@ -34,8 +34,8 @@ class BookAccess{
 	/**
 	 * Recupera por su Id e Idioma
 	 */ 
-	function findByIdLang($id,$lang){
-		Utilidades::_log("findByIdLang($id,$lang)");
+	function findByIdLang($id,$lang, $vo = false){
+		Utilidades::_log("findByIdLang($id,$lang,$vo)");
 		$query = "SELECT id,author,genre,saga,rating,price,sold,
 					book_id,lang,isbn,cover,title,synopsis,stock,visible,
 					publisher,publish_date
@@ -47,8 +47,8 @@ class BookAccess{
 		
 		$row = DB::ejecutarConsulta($query);
 		if(null != $row)//Por si no lo encuentra
-			return new BookLangDAO($row[0]);
-			//return new BookVO($row[0]);
+			if($vo) return new BookVO($row[0]);
+			else return new BookLangDAO($row[0]);
 		else return null;
 	}
 

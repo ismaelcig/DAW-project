@@ -47,11 +47,27 @@
 					</div>
 				</div>
 				<div class="btn-box">
+					<!--Esto se añade para facilitar las operaciones desde jquery-->
+					<input id="book_id" type="hidden" value="<?php echo $bookVO->getId()?>">
+					<input id="book_lang" type="hidden" value="<?php echo $bookVO->getLang()?>">
+					<input id="book_price" type="hidden" value="<?php echo $bookVO->getPrice()?>">
+					
 					<div class="col-md-12"> 
-						<a href="javascript:void(0);" 
-							<?php if($bookVO->getStock()==0) echo 'disabled'?>
-							class="btn add-bucket btn-padding" role="button">
+						<?php
+							$inCart = false;//Si está en el carro
+							if($logged){//La variable está en navbars
+								$inCart = UserFacade::isInCart( $bookVO->getId(),
+																$bookVO->getLang());
+							}
+						?>
+						<!--Añadir a cesta-->
+						<a class="btn add-bucket btn-padding <?php if($inCart) echo 'hidden';?>"
+							<?php if($bookVO->getStock()==0) echo 'disabled'?> href="#" role="button">
 								<span id="addCart">Add to Cart</span>
+						</a>
+						<a class="btn rem-bucket btn-padding <?php if(!$inCart) echo 'hidden';?>"
+							<?php if($bookVO->getStock()==0) echo 'disabled'?> href="#" role="button">
+								<span id="remove">Remove</span>
 						</a>
 						<a href="book-page.php?book=<?php echo $bookVO->getId()?>" 
 							class="btn btn-info btn-padding">

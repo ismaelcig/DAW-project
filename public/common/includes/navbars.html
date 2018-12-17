@@ -63,6 +63,7 @@ if(isset($_GET['book'])) $params.= '&book='.$_GET['book'];
 					<?php
 						$user = (isset($_SESSION['activeUser']) ? $_SESSION['activeUser'] : new UserDTO());
 						$logged = (null != $user->getId() ? true : false);//Para simplificar comprobaciones
+						$_SESSION['cart'] = ($logged ? $_SESSION['cart'] : null);//Carro de la compra
 					?>
 					<ul class="nav navbar-nav navbar-right">
 						<!--Registro-->
@@ -85,6 +86,18 @@ if(isset($_GET['book'])) $params.= '&book='.$_GET['book'];
 									<div class="row">
 										<div class="col-md-12">
 											<ul class="list-unstyled">
+												<li>
+													<a class="btn" href="cart.php">
+														<span id="cart">Cart</span> 
+														(<span id="cartAmount">
+															<?php 
+																if(null != $_SESSION['cart'])
+																	echo sizeOf($_SESSION['cart']->getBookVOs());
+																else echo'0';
+															?>
+														</span>)
+													</a>
+												</li>
 												<li>
 													<a class="btn">
 														<span id="myAcc">My Account</span>

@@ -21,6 +21,16 @@ class BookFacade{
 		}
 		return $res;
 	}
+	
+	/**
+	 * Recupera por su Id e Idioma
+	 */ 
+	function findByIdLang($id,$lang){
+		$obj = BookAccess::findByIdLang($id,$lang,$vo);
+		if(null != $obj)
+			return $obj;
+		else return null;
+	}
 
 	/**
 	 * Recupera un BookVO por su id

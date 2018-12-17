@@ -16,6 +16,7 @@
 			require_once ('common/BD/fachadas/GenreFacade.php');
 			require_once ('common/BD/fachadas/SagaFacade.php');
 			require_once ('common/BD/fachadas/UserFacade.php');
+			require_once(Utilidades::getRoot().'common/BD/objetos/DTO/OrderDTO.php');
 			Utilidades::_log('Entra ------->book-page.php<-------');
 			
 			//Comenzar session (inicializa variables de sesión)
@@ -32,7 +33,7 @@
 			
 			$author = AuthorFacade::findById($book->getAuthor());
 			$genre = GenreFacade::findById($book->getGenre());
-			$saga = SagaFacade::findById($book->getSaga());
+			$saga = (null != $book->getSaga() ? SagaFacade::findById($book->getSaga()) : null);
 		?>
 		<!--Icono-->
 		<title><?php echo $book->getTitle();?></title>
@@ -99,15 +100,29 @@
 						
 						<!--Botones-->
 						<div class="btn-box">
-							<!--Esto se añade para facilitar el manejo de favoritos desde jquery-->
-							<input id="user_id" type="hidden" value="<?php echo $user->getId()?>">
+							<!--Esto se añade para facilitar las operaciones desde jquery-->
+							<!--<input id="user_id" type="hidden" value="<php echo $user->getId()?>">-->
 							<input id="book_id" type="hidden" value="<?php echo $book->getId()?>">
 							<input id="book_lang" type="hidden" value="<?php echo $book->getLang()?>">
+							<input id="book_price" type="hidden" value="<?php echo $book->getPrice()?>">
 							
+							
+							<?php
+								$inCart = false;//Si está en el carro
+								if($logged){//La variable está en navbars
+									$inCart = UserFacade::isInCart(
+														$book->getId(),
+														$book->getLang());
+								}
+							?>
 							<!--Añadir a cesta-->
-							<a class="btn add-bucket" <?php if($book->getStock()==0) echo 'disabled'?>
-								href="#" role="button">
+							<a class="btn add-bucket  <?php if($inCart) echo 'hidden';?>" 
+								<?php if($book->getStock()==0) echo 'disabled'?> href="#" role="button">
 									<span id="addBucket">Add to bucket</span>
+							</a>
+							<a class="btn rem-bucket  <?php if(!$inCart) echo 'hidden';?>"
+								<?php if($book->getStock()==0) echo 'disabled'?> href="#" role="button">
+									<span id="remBucket">Remove from bucket</span>
 							</a>
 							<?php
 								$fav = false;//Si está en favoritos
@@ -161,7 +176,7 @@
 							</div>
 							<div class="col-md-3 col-xs-6">
 								<span id="saga" class="bold">Saga</span>: 
-								<?php echo $saga->getName()?>
+								<?php echo (null != $saga ? $saga->getName() :'-'); ?>
 							</div>
 							<div class="col-md-3 col-xs-6">
 								<span id="sold" class="bold">Sold</span>: 

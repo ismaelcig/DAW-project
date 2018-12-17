@@ -25,6 +25,8 @@
 	  "noStock":	"Agotado",
 	  "freeShip":	"Envío Gratis",
 	  "addBucket":	"Añadir a la cesta",
+	  "remBucket":	"Eliminar de la cesta",
+	  "remove":		"Eliminar",
 	  "addWish":	"Añadir a favoritos",
 	  "remWish":	"Eliminar de favoritos",
 	  "details":	"Detalles del libro",
@@ -64,8 +66,19 @@
 	  "regErr":		"Error al tratar de registrar.",
 	  
 	  "mustLog":	"Debes iniciar sesión para hacer esto.",
+	  "added":		"Libro añadido a la cesta.",
+	  "removed":	"Libro eliminado de la cesta.",
 	  "faved":		"Libro añadido a favoritos.",
-	  "unfaved":	"Libro eliminado de favoritos."
+	  "unfaved":	"Libro eliminado de favoritos.",
+	  
+	  "book":		"Libro",
+	  "price":		"Precio",
+	  "quantity":	"Cantidad",
+	  "subtotal":	"Subtotal",
+	  "emptyCart":	"Tu cesta está vacía.",
+	  "total":		"Total",
+	  "contShop":	"Volver a la tienda",
+	  "checkout":	"Pagar"
 	  
 	  
     }
@@ -102,6 +115,8 @@
 	  "noStock":	"No Stock",
 	  "freeShip":	"Free Shipment",
 	  "addBucket":	"Add to bucket",
+	  "remBucket":	"Remove from bucket",
+	  "remove":		"Remove",
 	  "addWish":	"Add to wishlist",
 	  "remWish":	"Remove from wishlist",
 	  "details":	"Book details",
@@ -141,8 +156,19 @@
 	  "regErr":		"Error while trying to register.",
 	  
 	  "mustLog":	"Please, log in to do this.",
+	  "added":		"Book added to your cart.",
+	  "removed":	"Book removed from your cart.",
 	  "faved":		"Book added to your wishlist.",
-	  "unfaved":	"Book removed from your wishlist."
+	  "unfaved":	"Book removed from your wishlist.",
+	  
+	  "book":		"Book",
+	  "price":		"Price",
+	  "quantity":	"Quantity",
+	  "subtotal":	"Subtotal",
+	  "emptyCart":	"Your cart is empty.",
+	  "total":		"Total",
+	  "contShop":	"Continue Shopping",
+	  "checkout":	"Checkout"
 	  
 	  
     }

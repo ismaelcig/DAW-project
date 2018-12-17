@@ -5,7 +5,7 @@ require_once(__DIR__.'/../../includes/Utilidades.php');
 
 
 /*********************************************************
- * Clase para interactuar con la tabla user
+ * Clase para interactuar con las tablas user, favourites, orders y order_books
  *********************************************************/
 class UserAccess{
 

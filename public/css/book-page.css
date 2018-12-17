@@ -10,7 +10,6 @@ body{
 }
 
 .section-container{
-	/*background: #fff;*/
 	background: #eff3fc;
 	border: 1px solid #CEEFFF;
 	margin-bottom: 10px;
@@ -21,7 +20,7 @@ body{
 
 /******Img******/
 .book-image img{
-	height: 350px;
+	max-height: 350px;
 	margin: auto;
 }
 
@@ -115,6 +114,14 @@ body{
 }
 .add-bucket:hover{
 	background: #ed6e6e;
+}
+.rem-bucket{/*Eliminar del Carro*/
+    background: #b75a5a;
+    color: #fff;
+    font-weight: bold;
+}
+.rem-bucket:hover{
+	background: #d84d4d;
 }
 .add-wish{/*Añadir a lista de desados*/
 	background: #aad2f3;

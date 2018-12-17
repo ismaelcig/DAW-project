@@ -89,6 +89,13 @@
 .add-bucket:hover {
     background: #ed6e6e;
 }
+.rem-bucket {
+    background: #b75a5a;
+	color: #fff;
+}
+.rem-bucket:hover {
+    background: #d84d4d;
+}
 /*
 .book-info-main name.a {
     padding: 5px 10px;
