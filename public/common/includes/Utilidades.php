@@ -90,7 +90,7 @@ class Utilidades{
 		foreach($array as $id){
 			if(!isset($_GET[$id])){
 				self::_log($id.' viene vacío.');
-				header("Location: index.php");
+				header("Location: ".self::getRoot()."index.php");
 				die();
 			}
 		}
@@ -105,56 +105,27 @@ class Utilidades{
 		self::_log('Entra: requiredObj()');
 		if(null == $obj){
 				self::_log('Era null.');
-			header("Location: index.php");
+			header("Location: ".self::getRoot()."index.php");
 			die();
 		}
 		self::_log('Sale:  requiredObj()');
 	}
 	
 	/**
-	 * Devuelve string encriptado
-	 *//*
-	function encrypt($str){
-		self::_log("Entra: encrypt($str)");
-		$iv = mcrypt_create_iv(
-			mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC),
-			MCRYPT_DEV_URANDOM
-		);
-
-		$encrypted = base64_encode(
-			$iv .
-			mcrypt_encrypt(
-				MCRYPT_RIJNDAEL_128,
-				hash('sha256', self::$key, true),
-				' '.$str.' ',
-				MCRYPT_MODE_CBC,
-				$iv
-			)
-		);
-		self::_log("Encriptado:  $encrypted");
-		return $encrypted;
-	}*/
-	
-	/**
-	 * Devuelve string desencriptado
-	 *//*
-	function decrypt($str){
-		self::_log("Entra: encrypt($str)");
-		$data = base64_decode($str);
-		$iv = substr($data, 0, mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC));
-
-		$decrypted = rtrim(
-			mcrypt_decrypt(
-				MCRYPT_RIJNDAEL_128,
-				hash('sha256', self::$key, true),
-				substr($data, mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC)),
-				MCRYPT_MODE_CBC,
-				$iv
-			),
-			"\0"
-		);
-		echo $decrypted;
-	}*/
+	 * Transforma un objeto a un array
+	 */
+	function object_to_array($data){
+		if(is_array($data) || is_object($data))
+		{
+			$result = array();
+	 
+			foreach($data as $key => $value) {
+				$result[$key] = $this->object_to_array($value);
+			}
+			return $result;
+		}
+		return $data;
+	}
 	
 	
 }

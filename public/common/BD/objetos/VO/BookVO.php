@@ -179,7 +179,7 @@ class BookVO {
 	 */
     public function __construct($row) {
 		//Cubrimos los campos que nos lleguen
-		$this->id = $row['id'];//Tiene que venir siempre
+		$this->id = (isset($row['id']) ? $row['id'] : $row['book_id']);//Tiene que venir siempre
 		if(isset($row['author'])){
 			$this->author = AuthorFacade::findById($row['author']);
 		}

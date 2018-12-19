@@ -14,6 +14,7 @@ class OrderDTO {
 	protected $total;//Decimal
 	protected $state;//String
 	protected $bookVOs;//Lista de BookVO
+	protected $address;
     
 	/**Getters/Setters**/
     public function getId() {return $this->id; }
@@ -41,9 +42,13 @@ class OrderDTO {
 	
     public function getBookVOs() {return $this->bookVOs; }
     public function setBookVOs($bookVOs) {$this->bookVOs = $bookVOs; }
+	
+    public function getAddress() {return $this->address; }
+    public function setAddress($address) {$this->address = $address; }
     
     
-    public function init($id, $user_id, $timeP, $timeS, $timeC, $total, $state, $bookVOs) {
+    public function init($id, $user_id, $timeP, $timeS, $timeC, 
+							$total, $state, $bookVOs, $address) {
         $this->id 		= $id;
         $this->user_id 	= $user_id;
         $this->timeP 	= $timeP;
@@ -52,6 +57,7 @@ class OrderDTO {
         $this->total 	= $total;
         $this->state 	= $state;
 		$this->bookVOs	= $bookVOs;
+		$this->address	= $address;
     }   
 	
     public function __construct() {

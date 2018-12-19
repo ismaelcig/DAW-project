@@ -66,11 +66,13 @@
 	  "regErr":		"Error al tratar de registrar.",
 	  
 	  "mustLog":	"Debes iniciar sesión para hacer esto.",
+	  "mustDir":	"Debes indicar tu dirección para esto.",
 	  "added":		"Libro añadido a la cesta.",
 	  "removed":	"Libro eliminado de la cesta.",
 	  "faved":		"Libro añadido a favoritos.",
 	  "unfaved":	"Libro eliminado de favoritos.",
 	  "thx":		"Muchas gracias, Tenemos tu pedido.",
+	  "ok":			"Todo correcto.",
 	  
 	  "book":		"Libro",
 	  "price":		"Precio",
@@ -157,11 +159,13 @@
 	  "regErr":		"Error while trying to register.",
 	  
 	  "mustLog":	"Please, log in to do this.",
+	  "mustDir":	"You must have an address to do this.",
 	  "added":		"Book added to your cart.",
 	  "removed":	"Book removed from your cart.",
 	  "faved":		"Book added to your wishlist.",
 	  "unfaved":	"Book removed from your wishlist.",
 	  "thx":		"Thank you, we've got your order.",
+	  "ok":			"Finished successfully.",
 	  
 	  "book":		"Book",
 	  "price":		"Price",

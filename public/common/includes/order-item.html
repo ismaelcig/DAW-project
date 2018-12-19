@@ -1,0 +1,26 @@
+<div class="order-item">
+	<div class="row">
+		<div class="col-md-8 col-sm-8 col-xs-12 ">
+			<h4><span id="books">Books</span>:</h4>
+			<ul>
+				<?php //Mostramos lista con los libros
+					foreach($order->getBookVOs() as $b){
+						echo '<li>'.$b->getTitle().' (<span id="'.$b->getLang().'"></span>).</li>';
+					}
+				?>
+			</ul>
+			<h4><span id="total">Total</span>: <strong><?php echo $order->getTotal().$_SESSION['currency']?></strong></h4>
+		</div>
+		
+		<div class="col-md-4 col-sm-4 col-xs-12 ">
+			<h4><span id="address">Address</span>: <?php echo $order->getAddress()?></h4>
+			<a class="btn btn-success btn-sm process" href="#" role="button">
+				<span class="glyphicon glyphicon-ok"></span>
+				<!--Esto se añade para facilitar las operaciones desde jquery-->
+				<input id="order_id" type="hidden" value="<?php echo $order->getId()?>">
+			</a>
+			
+		</div>
+		
+	</div>
+</div>

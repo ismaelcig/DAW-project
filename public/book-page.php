@@ -194,11 +194,11 @@
 					</div>
 					
 				</div>
-				<!--Relacionado con el Autor-->
+				<!--Relacionado con el Autor--><!--
 				<div class="row section-container">
 					<div class="col-md-12 fixed-height">
 						<h3><span id="moreFromAuth">More from the Author</span></h3>
-						<?php
+						<php
 							foreach(
 								BookFacade::
 									findBy(null, $book->getAuthor(), null, null)
@@ -211,13 +211,13 @@
 						?>
 						
 					</div>
-				</div>
-				<!--Otros/Relacionado con el Género-->
+				</div>-->
+				<!--Otros/Relacionado con el Género--><!--
 				<div class="row section-container">
 					<div class="col-md-12 fixed-height">
 						<h3><span id="moreFromGenre">Others/Same Genre</span></h3>
 					</div>
-				</div>
+				</div>-->
 			</div>
 			
 			

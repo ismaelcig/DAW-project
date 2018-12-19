@@ -30,6 +30,46 @@ class AuthorFacade{
 		
 		return self::daoToDto($obj);
 	}
+
+	/**
+	 * Recupera un autor por su nombre
+	 */ 
+	public function findByName($name){
+		$obj = AuthorAccess::findByName($name);
+		
+		return self::daoToDto($obj);
+	}
+	
+	/**
+	 * Busca el Id de un autor, si no existe, lo crea
+	 */
+	public function getAuthorId($name){
+		$id = 0;
+		$auth = AuthorAccess::findByName($name);
+		if(null == $auth){//Si no existe, lo crea
+			$id = AuthorAccess::insert($name);
+		}else{//Sino, devuelve id
+			$id = $auth->getId();
+		}
+		if(0 < $id)
+			return $id;
+		else return null;//Error
+	}
+	
+	
+	
+	
+	
+	/*************************************/
+	/*  Gestión Libros  ******************/
+	/*************************************//*
+	public function newBook(){
+		
+	}*/
+	
+	
+	
+	
 	
 	
 	
@@ -37,8 +77,9 @@ class AuthorFacade{
 	 * Recibe un DAO y lo pasa a DTO
 	 */
 	public function daoToDto($dao){
-		$dto = new AuthorDTO($dao->getId(),
-							 $dao->getName());
+		$dto = null;
+		if(null != $dao)
+			$dto = new AuthorDTO($dao->getId(),$dao->getName());
 		return $dto;
 	}
 	

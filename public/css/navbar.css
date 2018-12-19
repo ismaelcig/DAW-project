@@ -53,6 +53,23 @@
 	padding: 10px 15px;
 	min-width: 250px;
 }
+.user-opts li{
+	position: relative;
+	display: block;
+	margin-bottom: -1px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+}
+.user-opts li a{
+	width: 100%;
+	text-align: left;
+}
+/*Para diferenciar las opciones que
+requieren permisos*/
+.admin-opt{
+	background-color: #dae5ff !important;
+	border: 1px solid #a7a7a7 !important;
+}
 
 
 

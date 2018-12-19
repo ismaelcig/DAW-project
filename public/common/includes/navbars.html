@@ -85,7 +85,21 @@ if(isset($_GET['book'])) $params.= '&book='.$_GET['book'];
 								<li>
 									<div class="row">
 										<div class="col-md-12">
-											<ul class="list-unstyled">
+											<ul class="list-group user-opts">
+												<?php
+													/**Si es administrador, añadimos por encima
+													 * las opciones que requieren permisos
+													 * Sino, no se imprimen
+													 */
+													echo //Administración
+														'<li class="admin-opt">
+															<a class="btn" href="admin.php">
+																<span id="administration">Administration</span>
+															</a>
+														</li>';
+													
+													
+												?>
 												<li>
 													<a class="btn" href="cart.php">
 														<span id="cart">Cart</span> 
@@ -113,7 +127,7 @@ if(isset($_GET['book'])) $params.= '&book='.$_GET['book'];
 														<span id="orders">Orders</span>
 													</a>
 												</li>
-												<li>
+												<li class="admin-opt">
 													<a class="btn" href="error.php">
 														<span id="">ASDF</span>
 													</a>
@@ -216,7 +230,7 @@ if(isset($_GET['book'])) $params.= '&book='.$_GET['book'];
 							</ul>
 						</li>									
 					</ul>
-					<!--SearchBar-->
+					<!--SearchBar--><!--
 					<div class="nav navbar-nav navbar-right">
 						<form class="navbar-form navbar-left" action="/action_page.php">
 							<div class="input-group">
@@ -229,7 +243,7 @@ if(isset($_GET['book'])) $params.= '&book='.$_GET['book'];
 								</div>
 							</div>
 						</form>
-					</div>
+					</div>-->
 				</div>
 			</div>
 		</div>

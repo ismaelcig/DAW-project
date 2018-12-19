@@ -15,18 +15,17 @@ class BookAccess{
 	 */
 	function findAll() {
 		Utilidades::_log("findAll()");
-		$lang = $_SESSION['lang'];
-		$query ="SELECT id,author,genre,saga,rating,price,sold,
+		// $lang = $_SESSION['lang'];
+		$query ="SELECT id,author,genre,saga,rating,price,sold, 
 					book_id,lang,isbn,cover,title,synopsis,stock,visible,
 					publisher,publish_date
-				FROM book, book_lang
-				WHERE id = book_id
-				  AND lang = $lang";
+				FROM book, book_lang 
+				WHERE id = book_id";
 		$res = array();
 		
 		foreach(DB::ejecutarConsulta($query) as $row) {
 			// Añadimos un objeto por cada elemento obtenido
-			$res[] = new BookLangDAO($row);
+			$res[] = new BookVO($row);
 		}
 		return $res;
 	}
@@ -136,6 +135,100 @@ class BookAccess{
 		$update->execute();
 		Utilidades::_log('Stock-1');
 	}
+	
+	
+	
+	
+	
+	/**********************************/
+	/* Gestión de libros  *************/
+	/**********************************/
+	
+	/**
+	 * Insertar book
+	 */
+	public function insertBook($author, $genre, $saga, $rating, $price, $sold){
+		Utilidades::_log("insertBook()");
+		$query = "INSERT INTO book(author, genre, saga, rating, price, sold) 
+			VALUES (:author, :genre, :saga, :rating, :price, :sold)";
+		$db=DB::conectar();//Devuelve conexión
+		$insert=$db->prepare($query);
+		$insert->bindValue('author',$author);
+		$insert->bindValue('genre',$genre);
+		$insert->bindValue('saga',$saga);
+		$insert->bindValue('rating',$rating);
+		$insert->bindValue('price',$price);
+		$insert->bindValue('sold',$sold);
+		$insert->execute();
+		//Recuperamos el id del objeto
+		$last_id = $db->lastInsertId();
+		if(null != $last_id && 0< $last_id){
+			Utilidades::_log("Insertado book ".$last_id.".");
+			return $last_id;
+		}else{
+			return 0;
+		}
+	}
+	
+	/**
+	 * Insertar book_lang
+	 */
+	public function insertBook_lang($book_id,$lang,$isbn,$cover,$title,$synopsis,$stock,
+						$visible,$publisher,$publish_date){
+		Utilidades::_log("insertBook_lang($book_id,$lang,$title)");
+		$query = "INSERT INTO book_lang(book_id,lang,isbn,cover,title,synopsis,stock,
+										visible,publisher,publish_date) 
+					VALUES (:book_id,:lang,:isbn,:cover,:title,:synopsis,:stock,
+						:visible,:publisher,:publish_date)";
+		
+		$db=DB::conectar();//Devuelve conexión
+		$insert=$db->prepare($query);
+					
+		$insert->bindValue('book_id',$book_id);
+		$insert->bindValue('lang',$lang);
+		$insert->bindValue('isbn',$isbn);
+		$insert->bindValue('cover',$cover);
+		$insert->bindValue('title',$title);
+		$insert->bindValue('synopsis',$synopsis);
+		$insert->bindValue('stock',$stock);
+		$insert->bindValue('visible',$visible);
+		$insert->bindValue('publisher',$publisher);
+		$insert->bindValue('publish_date',$publish_date);
+		$insert->execute();
+		
+		Utilidades::_log("Insertado book_lang ".$book_id."-".$lang.".");
+		
+	}
+	
+	/**
+	 * Eliminar book_lang
+	 */
+	public function deleteBook($id, $lang){
+		Utilidades::_log("deleteBook($id, $lang)");
+		
+		$query1 = "DELETE FROM book_lang WHERE book_id = :id";
+		$query2 = "DELETE FROM book WHERE id = :id";
+		if(null != $lang)//Si se especifica idioma
+			$query1.= " AND lang = :lang";
+		
+		//Borrado sobre book_lang
+		$db=DB::conectar();//Devuelve conexión
+		$delete=$db->prepare($query1);
+		$delete->bindValue('id',$id);
+		if(null != $lang)
+			$delete->bindValue('lang',$lang);
+		$delete->execute();
+		
+		if(null == $lang){
+			//Borrado sobre book
+			$delete=$db->prepare($query2);
+			$delete->bindValue('id',$id);
+			$delete->execute();
+		}
+		
+	}
+	
+	
 }
 
 ?>

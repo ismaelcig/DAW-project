@@ -75,7 +75,7 @@ class UserFacade{
 	
 	
 	/********************************************
-	 * Métodos para gestionar carro
+	 * Métodos para gestionar carro/pedidos
 	 ********************************************/
 	
 	/**
@@ -127,10 +127,24 @@ class UserFacade{
 	}
 	
 	/**
-	 * Realiza el pedido
+	 * Realiza el pedido (Lo deja como Pendiente)
 	 */
 	public function saveCart(){
 		UserAccess::insertOrder($_SESSION['cart']);
+	}
+	
+	/**
+	 * Procesa el pedido (Lo pasa a Enviado)
+	 */
+	public function processOrder($id){
+		UserAccess::processOrder($id);
+	}
+	
+	/**
+	 * Recupera todos los pedidos Pendientes
+	 */
+	public function getPendingOrders(){
+		return UserAccess::findOrders('P');
 	}
 	
 	

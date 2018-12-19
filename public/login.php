@@ -52,7 +52,7 @@ if (isset($_POST['signup'])) {
 	$user = UserFacade::findUser($_POST['_user'],$_POST['_pass']);
 	
 	// Comprobamos que lo ha encontrado
-	if (null != $user->getId()) {
+	if (null != $user && null != $user->getId()) {
 		$_SESSION['activeUser'] = $user;//Crea la sesión de usuario
 		$_SESSION['cart'] = new OrderDTO();//Crea el carro para añadir libros
 		$_SESSION['cart']->setUser_Id($user->getId());//Informamos el user_id

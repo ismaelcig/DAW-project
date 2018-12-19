@@ -2,6 +2,7 @@
 require_once(__DIR__.'/../DB.php');
 require_once(__DIR__.'/../objetos/DTO/BookDTO.php');
 require_once(__DIR__.'/../acceso/BookAccess.php');
+require_once(__DIR__.'/../../includes/Utilidades.php');
 
 
 /*********************************************************
@@ -12,13 +13,15 @@ class BookFacade{
 	 * Recupera todos los registros de las tablas book y book_lang.
 	 * Devuelve un array de objetos bookDTO
 	 */
-	public function findAll() {
+	public function findAll() {/*
 		$res = array();
 		
 		foreach(BookAccess::findAll() as $obj) {
 			// Añadimos un objeto por cada elemento obtenido
 			$res[] = self::daoToDto($obj);
-		}
+		}*/
+		$res = BookAccess::findAll();
+		Utilidades::traza($res);
 		return $res;
 	}
 	
@@ -58,11 +61,42 @@ class BookFacade{
 	}
 	
 	/**
-	 * 
+	 * Realiza la venta del libro
 	 */
 	public function sellBook($book){
 		BookAccess::sellBook($book->getId(), $book->getLang());
 	}
+	
+	
+	
+	
+	
+	/*************************************/
+	/*  Gestión Libros  ******************/
+	/*************************************/
+	public function newBook($author, $genre, $saga, $rating, $price, $sold,
+				$book_id,$lang,$isbn,$cover,$title,$synopsis,$stock,
+						$visible,$publisher,$publish_date)
+	{
+		if(null == $book_id){//Hay que crear book
+			$book_id = BookAccess::insertBook($author, $genre, $saga, $rating, $price, $sold);
+		}
+		if(0< $book_id){//Ya lo tenemos
+			BookAccess::insertBook_lang($book_id,$lang,$isbn,$cover,$title,
+					$synopsis,$stock,$visible,$publisher,$publish_date);
+			
+		}else{
+			//Error
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

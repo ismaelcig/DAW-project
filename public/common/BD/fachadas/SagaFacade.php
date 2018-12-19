@@ -31,6 +31,22 @@ class SagaFacade{
 		return self::daoToDto($obj);
 	}
 	
+	/**
+	 * Busca el Id de una saga, si no existe, la crea
+	 */
+	public function getSagaId($name){
+		$id = 0;
+		$s = SagaAccess::findByName($name);
+		if(null == $s){//Si no existe, lo crea
+			$id = SagaAccess::insert($name);
+		}else{//Sino, devuelve id
+			$id = $s->getId();
+		}
+		if(0 < $id)
+			return $id;
+		else return null;//Error
+	}
+	
 	
 	
 	/**

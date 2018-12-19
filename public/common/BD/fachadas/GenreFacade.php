@@ -31,6 +31,22 @@ class GenreFacade{
 		return self::daoToDto($obj);
 	}
 	
+	/**
+	 * Busca el Id de un género, si no existe, lo crea
+	 */
+	public function getGenreId($name){
+		$id = 0;
+		$g = GenreAccess::findByName($name);
+		if(null == $g){//Si no existe, lo crea
+			$id = GenreAccess::insert($name);
+		}else{//Sino, devuelve id
+			$id = $g->getId();
+		}
+		if(0 < $id)
+			return $id;
+		else return null;//Error
+	}
+	
 	
 	
 	/**

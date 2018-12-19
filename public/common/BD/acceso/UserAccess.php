@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__.'/../DB.php');
 require_once(__DIR__.'/../objetos/DAO/UserDAO.php');
+require_once(__DIR__.'/../objetos/DTO/OrderDTO.php');
 require_once(__DIR__.'/../../includes/Utilidades.php');
 require_once(__DIR__.'/../fachadas/BookFacade.php');
 
@@ -128,7 +129,7 @@ class UserAccess{
 	
 	
 	/********************************************
-	 * 
+	 * Gestión de pedidos
 	 ********************************************/
 	 
 	/**
@@ -171,6 +172,77 @@ class UserAccess{
 		}
 		
 		Utilidades::_log("Pedido registrado.");
+	}
+	
+	
+	/**
+	 * Recuperar pedidos según su estado
+	 */
+	public function findOrders($state){
+		Utilidades::_log("findOrders($state)");
+		
+		$res = array();
+		$query1 = 'SELECT * FROM orders
+					WHERE state = :state';
+		$query2 = 'SELECT book.id, book_lang.title, book_lang.lang 
+					FROM order_books, book, book_lang
+					WHERE order_books.order_id = :order_id
+					  AND order_books.book_id = book.id
+					  AND order_books.book_id = book_lang.book_id
+					  AND order_books.book_lang = book_lang.lang';
+		
+		/***Buscar orders***/
+		$db=DB::conectar();//Devuelve conexión
+		$select=$db->prepare($query1);
+		//Bind values
+		$select->bindValue('state',$state);
+		$select->execute();
+		//init($id, $user_id, $timeP, $timeS, $timeC, $total, $state, $bookVOs)
+		foreach($select->fetchAll() as $row) {
+			// Añadimos un objeto por cada elemento obtenido
+			$order = new OrderDTO();
+			$order->init($row['id'], $row['user_id'], $row['timeP'], null, null,
+							$row['total'], $row['state'], null, $row['address']);
+			$res[] = $order;
+		}
+		
+		
+		//Buscamos los libros de cada order en order_books
+		foreach($res as $order){
+			$select=$db->prepare($query2);
+			//Bind values
+			$select->bindValue('order_id',$order->getId());
+			$select->execute();
+			
+			$book_list = array();//Lista con los libros
+			foreach($select->fetchAll() as $row) {
+				$book_list[] = new BookVO($row);
+			}
+			$order->setBookVOs($book_list);
+		}
+		
+		return $res;
+	}
+	
+	/**
+	 * Procesa el pedido (Lo pasa a Enviado)
+	 */
+	public function processOrder($id){
+		Utilidades::_log("processOrder($id)");
+		$query = 'UPDATE orders
+					SET timeS = :timeS,
+						state = :state
+					WHERE id = :id';
+		$db=DB::conectar();//Devuelve conexión
+		$insert=$db->prepare($query);
+		//Bind values
+		$insert->bindValue('timeS',date('Y-m-d G:i:s'));//Fecha/Hora actual
+		$insert->bindValue('state','S');//Estado: Enviado
+		$insert->bindValue('id',$id);
+		
+		$insert->execute();
+		
+		Utilidades::_log("Procesado.");
 	}
 	
 	
